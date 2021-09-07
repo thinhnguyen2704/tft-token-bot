@@ -45,47 +45,42 @@ Func autobot($TimeInMs)
 	While $pxchecksum = PixelChecksum($topmiddle[0] - 5, $topmiddle[1] + 5, $topmiddle[0] + 5, $topmiddle[1] + 10)
 		Sleep(7000) ;every 7 sec check if the game is ready
 	WEnd
+
 	Local $timer = TimerInit()
-	If $TimeInMs = 0 Then
-		$Clock = 900000
-	Else
-		$Clock = $TimeInMs
-	EndIf
-	Sleep(59000)
+	$Clock = $TimeInMs
+	Sleep(60000)
 
-	While TimerDiff($timer) <= $Clock
-		;For $i = 1 To Random(1, 2, 1)
-		For $i = 1 To 5
-			MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10)
-			Sleep(Round(Random(1, 2, 0) * 1000))
-		Next
-		;MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * (Random(30,40,1) + (20 * Random(0,1,1))))), $pxdifference[1] + Round($gamesz[1] * Random(31,34,0)), 1, 25) =====>   UNKNOWN ERROR
-		If TimerDiff($timer) >= 300000 Then
-			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 2, 10)
-		EndIf
-		Sleep(45000) ;do something every 45 sec
-	WEnd
-
-	;Quit the match immediately when HP reaches 0
 	While WinExists("League of Legends (TM) Client")
-		MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
-		Sleep(Random(5, 15, 1) * 1000)
+		While TimerDiff($timer) <= $Clock
+			;For $i = 1 To Random(1, 2, 1)
+			For $i = 1 To 5
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy all champs from store
+				Sleep(2000)
+			Next
+			If TimerDiff($timer) >= 300000 Then 
+				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4, 10) ;start buying exp after 5 mins 
+			EndIf
+			;Check if HP reaches 0
+			If TimerDiff($timer) >= 150000 Then 
+				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
+			EndIf	
+			;Surrender if the ff time has passed
+			If $TimeInMs <> 0 Then  
+				Send("{ENTER}")
+				Sleep(500)
+				Send("/")
+				Sleep(300)
+				Send("f")
+				Sleep(200)
+				Send("f")
+				Sleep(500)
+				Send("{ENTER}")
+				Sleep(500)
+				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1, 10)
+			EndIf
+			Sleep(20000) ;do something every 45 sec
+		WEnd
 	WEnd
-
-	If $TimeInMs <> 0 Then ;Surrender if the checkbox is checked
-		Send("{ENTER}")
-		Sleep(500)
-		Send("/")
-		Sleep(300)
-		Send("f")
-		Sleep(200)
-		Send("f")
-		Sleep(500)
-		Send("{ENTER}")
-		Sleep(500)
-		MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1, 10)
-	Else 
-	EndIf
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
 EndFunc   ;==>autobot
@@ -96,6 +91,7 @@ $Time_Input_Area = GUICtrlCreateGroup("Surrender after ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
 $StartNStop = GUICtrlCreateButton("Start", 168, 40, 73, 25)
+Global $Start = False 
 $Note = GUICtrlCreateLabel("Love you to the infinity and beyond!!!!", 48, 72, 202, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUISetState(@SW_SHOW)
@@ -105,28 +101,25 @@ While 1
 	$nMsg = GUIGetMsg()
 	Switch $nMsg
 		Case $GUI_EVENT_CLOSE
+			ExitLoop
 			Exit
 		Case $StartNStop
 			If Not $Start Then
+				GUICtrlSetData($StartNStop, "Start")
 				$matchlength = StringSplit(GUICtrlRead($TimeInputBox), ":")
 				Global $MatchLengthInMilisecond = Int($matchlength[1]) * 60000 + Int($matchlength[2]) * 1000
-				If $MatchLengthInMilisecond < 600000 And $MatchLengthInMilisecond <> 0 Then
-					GUICtrlSetData($text1, "Minimum of game duration must be 10 min.")
-				ElseIf $MatchLengthInMilisecond = 0 Then
-					GUICtrlSetData($text1, "No surrender.")
-					GUICtrlSetData($StartNStop, "Stop")
-					GUICtrlSetState($TimeInputBox, $GUI_DISABLE)
-					While 1
-						autobot($MatchLengthInMilisecond)
-					WEnd
+				$Start = True 
+				While 1
+					autobot($MatchLengthInMilisecond)
+				WEnd	
 			Else
 				ExitLoop
+				$Start = False 
 				GUICtrlSetData($StartNStop, "Start")
 				GUICtrlSetState($TimeInputBox, $GUI_ENABLE)
 			EndIf
 	EndSwitch
 WEnd
-
 
 
 
