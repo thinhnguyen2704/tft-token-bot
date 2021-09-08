@@ -94,21 +94,21 @@ Func autobot($TimeInMs)
 			EndIf
 			Sleep(25000)
 		WEnd	
+		;Surrender if the ff time has passed
+		If $TimeInMs <> 0 Then  
+			Send("{ENTER}")
+			Sleep(500)
+			Send("/")
+			Sleep(300)
+			Send("f")
+			Sleep(200)
+			Send("f")
+			Sleep(500)
+			Send("{ENTER}")
+			Sleep(500)
+			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1, 10)
+		EndIf
 	WEnd
-	;Surrender if the ff time has passed
-	If $TimeInMs <> 0 Then  
-		Send("{ENTER}")
-		Sleep(500)
-		Send("/")
-		Sleep(300)
-		Send("f")
-		Sleep(200)
-		Send("f")
-		Sleep(500)
-		Send("{ENTER}")
-		Sleep(500)
-		MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1, 10)
-	EndIf
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
 EndFunc   ;==>autobot
