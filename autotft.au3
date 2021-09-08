@@ -56,14 +56,18 @@ Func autobot($TimeInMs)
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy all champs from store
 				Sleep(1000)
 			Next
-			If TimerDiff($timer) >= 300000 Then ;After 5 mins
+			;If TimerDiff($timer) >= 300000 Then ;After 5 mins
 				;Collect mystery boxes
-				MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
-				MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.45), ($pxdifference[1] + Round($gamesz[1] * 0.25)), 1, 10)
+				MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
+				Sleep(4000)
+				MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.307)), 1, 10)
+				Sleep(4000)
+				MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.4)), ($pxdifference[1] + Round($gamesz[1] * 0.307)), 1, 10)
+				Sleep(4000)
 				;Buy exp 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4, 10)
 				Sleep(2000)
-			EndIf
+			;EndIf
 			;Check if HP reaches 0 after 10 mins
 			If TimerDiff($timer) >= 600000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
@@ -71,20 +75,22 @@ Func autobot($TimeInMs)
 			Sleep(30000)
 		WEnd	
 		;Surrender if the ff time has passed
-		;If $TimeInMs <> 0 Then  
-		Send("{ENTER}")
-		Sleep(500)
-		Send("/")
-		Sleep(300)
-		Send("f")
-		Sleep(200)
-		Send("f")
-		Sleep(500)
-		Send("{ENTER}")
-		Sleep(500)
-		MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1, 10)
-		;EndIf
+		If $TimeInMs <> 0 Then  
+			Send("{ENTER}")
+			Sleep(500)
+			Send("/")
+			Sleep(300)
+			Send("f")
+			Sleep(200)
+			Send("f")
+			Sleep(500)
+			Send("{ENTER}")
+			Sleep(500)
+			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1, 10)
+		EndIf
+		Sleep(10000)
 	WEnd
+	
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
 EndFunc   ;==>autobot
