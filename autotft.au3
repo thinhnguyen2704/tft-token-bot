@@ -72,17 +72,27 @@ Func autobot($TimeInMs)
 					MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy all champs from store
 					Sleep(400)
 				Next
-				;Arrange champs 
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.14)), ($pxdifference[1] + Round($gamesz[1] * 0.7)), ($pxdifference[0] + Round($gamesz[0] * 0.51)), ($pxdifference[1] + Round($gamesz[1] * 0.68)))
-				;Drag items from base to champs
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.14)), ($pxdifference[1] + Round($gamesz[1] * 0.7)), ($pxdifference[0] + Round($gamesz[0] * 0.51)), ($pxdifference[1] + Round($gamesz[1] * 0.68)))
+				;#### Arrange champs on the last row with position from left to right 
+				;First pile of last row 
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				;Second pile of last row
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.54)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.375)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				;Third pile of last row
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.55)), ($pxdifference[0] + Round($gamesz[0] * 0.447)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				;Sixth pile of last row
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5625)), ($pxdifference[1] + Round($gamesz[1] * 0.55)), ($pxdifference[0] + Round($gamesz[0] * 0.625)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				;### End arrange champs
+				
+				;####Drag items from base to champs
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.0875)), ($pxdifference[1] + Round($gamesz[1] * 0.726), ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+
 			EndIf
 
 			;Check if HP reaches 0 after 15 mins
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
 			EndIf
-			Sleep(30000)
+			Sleep(25000)
 		WEnd	
 	WEnd
 	;Surrender if the ff time has passed
