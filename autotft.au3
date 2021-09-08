@@ -53,7 +53,7 @@ Func autobot($TimeInMs)
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
 			If TimerDiff($timer) < 300000 Then
-				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0,1,2,3,4)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy one champ each time to defend
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy one champ each time to defend
 			EndIf
 			
 			;Collect mystery boxes
