@@ -52,45 +52,53 @@ Func autobot($TimeInMs)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
-			For $i = 1 To 5
-				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy all champs from store
-				Sleep(1000)
-			Next
-			;If TimerDiff($timer) >= 300000 Then ;After 5 mins
-				;Collect mystery boxes
-				MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
-				Sleep(4000)
-				MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.307)), 1, 10)
-				Sleep(4000)
-				MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.4)), ($pxdifference[1] + Round($gamesz[1] * 0.307)), 1, 10)
-				Sleep(4000)
-				;Buy exp 
-				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4, 10)
-				Sleep(2000)
-			;EndIf
-			;Check if HP reaches 0 after 10 mins
-			If TimerDiff($timer) >= 600000 Then 
+			If TimerDiff($timer) < 300000 Then
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0,1,2,3,4)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy one champ each time to defend
+			EndIf
+			
+			;Collect mystery boxes
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
+			Sleep(4000)
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.28)), 1, 10)
+			Sleep(3000)
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.4)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1, 10)
+			Sleep(3000)
+			;Buy exp 
+			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4, 10)
+			Sleep(2000)
+			
+			If TimerDiff($timer) >= 300000 Then ;After 5 mins
+				For $i = 1 To 5
+					MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy all champs from store
+					Sleep(400)
+				Next
+				;Arrange champs 
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.14)), ($pxdifference[1] + Round($gamesz[1] * 0.7)), ($pxdifference[0] + Round($gamesz[0] * 0.51)), ($pxdifference[1] + Round($gamesz[1] * 0.68)))
+				;Drag items from base to champs
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.14)), ($pxdifference[1] + Round($gamesz[1] * 0.7)), ($pxdifference[0] + Round($gamesz[0] * 0.51)), ($pxdifference[1] + Round($gamesz[1] * 0.68)))
+			EndIf
+
+			;Check if HP reaches 0 after 15 mins
+			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
 			EndIf
 			Sleep(30000)
 		WEnd	
-		;Surrender if the ff time has passed
-		If $TimeInMs <> 0 Then  
-			Send("{ENTER}")
-			Sleep(500)
-			Send("/")
-			Sleep(300)
-			Send("f")
-			Sleep(200)
-			Send("f")
-			Sleep(500)
-			Send("{ENTER}")
-			Sleep(500)
-			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1, 10)
-		EndIf
-		Sleep(10000)
 	WEnd
-	
+	;Surrender if the ff time has passed
+	If $TimeInMs <> 0 Then  
+		Send("{ENTER}")
+		Sleep(500)
+		Send("/")
+		Sleep(300)
+		Send("f")
+		Sleep(200)
+		Send("f")
+		Sleep(500)
+		Send("{ENTER}")
+		Sleep(500)
+		MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1, 10)
+	EndIf
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
 EndFunc   ;==>autobot
@@ -115,11 +123,11 @@ While 1
 			Exit
 		Case $StartNStop
 			If Not $Start Then
+				$Start = True 
 				GUICtrlSetData($StartNStop, "Stop")
 				$matchlength = StringSplit(GUICtrlRead($TimeInputBox), ":")
 				Global $MatchLengthInMilisecond = Int($matchlength[1]) * 60000 + Int($matchlength[2]) * 1000
-				$Start = True 
-				While 1
+				While $Start
 					autobot($MatchLengthInMilisecond)
 				WEnd	
 			Else
