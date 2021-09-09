@@ -53,7 +53,16 @@ Func autobot($TimeInMs)
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
 			If TimerDiff($timer) < 300000 Then
-				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy one champ each time to defend
+				Local $x1 = ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1))))
+				Local $y1 = Round(($gamesz[1] * 0.92) + $pxdifference[1])
+				Local $x2 = ($pxdifference[0] + Round($gamesz[0] * 0.458))
+				Local $y2 = ($pxdifference[1] + Round($gamesz[1] * 0.53))
+				Local $x3 = ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * Random(0, 4, 1)))))
+				Local $y3 = ($pxdifference[1] + Round($gamesz[1] * 0.63))
+				MouseClick("left", $x1, $y1, 1)
+				MouseClickDrag("left", $x2, $y2, $x3, $y3)
+				;~ MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy one champ each time to defend
+				;~ MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * Random(0, 4, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
 			EndIf
 			
 			;Collect mystery boxes
@@ -70,21 +79,30 @@ Func autobot($TimeInMs)
 			If TimerDiff($timer) >= 300000 Then ;After 5 mins
 				For $i = 1 To 5
 					MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1, 10) ;buy all champs from store
-					Sleep(400)
 				Next
+				
 				;#### Arrange champs on the last row with position from left to right 
-				;First pile of last row 
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
-				;Second pile of last row
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.54)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.375)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
-				;Third pile of last row
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.55)), ($pxdifference[0] + Round($gamesz[0] * 0.447)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
-				;Sixth pile of last row
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5625)), ($pxdifference[1] + Round($gamesz[1] * 0.55)), ($pxdifference[0] + Round($gamesz[0] * 0.625)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				For $i = 1 To 7
+					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * ($i - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				Next
+
+				;~ ;First pile of last row 
+				;~ MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				;~ ;Second pile of last row
+				;~ MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.375)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				;~ ;Third pile of last row
+				;~ MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.45)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				;~ ;Sixth pile of last row
+				;~ MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.625)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				;~ ;Seventh pile of last row
+				;~ MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				
 				;### End arrange champs
 				
 				;####Drag items from base to champs
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.0875)), ($pxdifference[1] + Round($gamesz[1] * 0.726), ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.0875)), ($pxdifference[1] + Round($gamesz[1] * 0.726), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 *  Random(0, 7, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.108)), ($pxdifference[1] + Round($gamesz[1] * 0.71), ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
 
 			EndIf
 
@@ -92,7 +110,7 @@ Func autobot($TimeInMs)
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
 			EndIf
-			Sleep(25000)
+			Sleep(20000)
 		WEnd	
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
