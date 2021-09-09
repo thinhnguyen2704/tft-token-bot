@@ -61,7 +61,7 @@ Func Auto($TimeInMs)
 
 			;#### Arrange champs on the last row with position from left to right 
 			For $j = 1 To 7 
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.068 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.067 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
 			Next
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
@@ -123,6 +123,7 @@ Func Auto($TimeInMs)
 			;Check if HP reaches 0 after 15 mins
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
+				Sleep(500)
 			EndIf
 			Sleep(10000)
 		WEnd	
@@ -143,11 +144,7 @@ Func Auto($TimeInMs)
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
-EndFunc   ;==>autobot
-
-;This function drag items from base to put them on champions
-;~ Func UseItem()
-;~ EndFunc
+EndFunc
 
 #Region
 $Menu = GUICreate("Wind yêu Snow", 298, 154, -1, -1)
