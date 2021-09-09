@@ -55,26 +55,23 @@ Func Auto($TimeInMs)
 			For $i = 1 To 5
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
 			Next
-
 			;Buy exp 
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4, 40)
-
 			;#### Arrange champs on the last row with position from left to right 
 			For $j = 1 To 7 
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.067 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
 			Next
 			;Collect mystery boxes
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
 			Sleep(4000)
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1, 10)
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
 			Sleep(3000)
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.4)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1, 10)
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.4)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 			Sleep(3000)
-	
-			If TimerDiff($timer) >= 300000 Then ;After 5 mins
-
-				
+			;Things to do after 5 mins
+			If TimerDiff($timer) >= 300000 Then 
 				;####Drag items from base to champs
+				;Only for Spirit Blossom arena
 				;UseItem()
 				Local $ChampCoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 *  Random(0, 6, 1))))
 				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.63)
@@ -119,7 +116,6 @@ Func Auto($TimeInMs)
 				MouseClickDrag("left", $Item10CoordX, $Item10CoordY, $ChampCoordX, $ChampCoordY)
 				Sleep(500)
 			EndIf
-
 			;Check if HP reaches 0 after 15 mins
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
