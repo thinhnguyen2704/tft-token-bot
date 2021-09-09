@@ -42,12 +42,13 @@ Func Auto($TimeInMs)
 	Local $pxdifference[2] = [Round((@DesktopWidth - $gamesz[0]) / 2), Round((@DesktopHeight - $gamesz[1]) / 2)]
 	Local $topmiddle[2] = [@DesktopWidth / 2, ($pxdifference[1] + 3)]
 	Local $pxchecksum = PixelChecksum($topmiddle[0] - 5, $topmiddle[1] + 5, $topmiddle[0] + 5, $topmiddle[1] + 10)
-	Local $timer = TimerInit()
-	$Clock = $TimeInMs
+	
 	While $pxchecksum = PixelChecksum($topmiddle[0] - 5, $topmiddle[1] + 5, $topmiddle[0] + 5, $topmiddle[1] + 10)
 		Sleep(7000) ;every 7 sec check if the game is ready
 	WEnd
 
+	Local $timer = TimerInit()
+	$Clock = $TimeInMs
 	Sleep(60000) ;wait for the match to start
 
 	While WinExists("League of Legends (TM) Client")
