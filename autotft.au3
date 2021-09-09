@@ -55,7 +55,7 @@ Func Auto($TimeInMs)
 			If TimerDiff($timer) < 300000 Then
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy one champ each time to defend
 				Sleep(1000)
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * Random(0, 4, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * Random(0, 4, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
 				Sleep(1000)
 			EndIf
 			
@@ -77,19 +77,25 @@ Func Auto($TimeInMs)
 
 				;#### Arrange champs on the last row with position from left to right 
 				For $j = 1 To 7 
-					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
 				Next
 				
 				;####Drag items from base to champs
 				;UseItem()
-				Local $ChampCoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 *  Random(0, 7, 1))))
+				Local $ChampCoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 *  Random(0, 6, 1))))
 				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.63)
 				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.0875)
 				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.726)
 				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.108)
 				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.71)
 				Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.0875)
-				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.68)	
+				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.667)
+				Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.108)
+				Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.648)	
+				Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.104)
+				Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.614)
+				Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.108)
+				Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.71)			
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $ChampCoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $ChampCoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $ChampCoordX, $ChampCoordY)
@@ -159,7 +165,3 @@ While 1
 			EndIf
 	EndSwitch
 WEnd
-
-
-
-
