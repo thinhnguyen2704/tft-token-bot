@@ -7,7 +7,7 @@
 
 
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_Icon=..\tft.ico
+#AutoIt3Wrapper_Icon=..\snowflake.png 
 #AutoIt3Wrapper_Compile_Both=y
 #AutoIt3Wrapper_Res_Comment=Made by m1nt.
 #AutoIt3Wrapper_Res_ProductName=TFT Auto BOT
@@ -53,19 +53,13 @@ Func Auto($TimeInMs)
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
 			If TimerDiff($timer) < 300000 Then
-				Local $x1 = $pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))
-				Local $y1 = $pxdifference[1] + Round(($gamesz[1] * 0.92)
-				Local $x2 = $pxdifference[0] + Round($gamesz[0] * 0.458)
-				Local $y2 = $pxdifference[1] + Round($gamesz[1] * 0.53)
-				Local $x3 = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * Random(0, 4, 1))))
-				Local $y3 = $pxdifference[1] + Round($gamesz[1] * 0.63)
-				MouseClick("left", $x1, $y1, 1)
-				MouseClickDrag("left", $x2, $y2, $x3, $y3)
-				;~ MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy one champ each time to defend
-				;~ MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * Random(0, 4, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy one champ each time to defend
+				Sleep(1000)
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * Random(0, 4, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+				Sleep(1000)
 			EndIf
 			
-			CollectMysteryBoxes()
+			CollectMysteryBox()
 			
 			;Buy exp 
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4)
@@ -116,6 +110,8 @@ Func UseItem($Num)
 	Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.726)
 	Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.108)
 	Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.71)
+	Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.0875)
+	Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.68)	
 	MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $ChampCoordX, $ChampCoordY)
 	MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $ChampCoordX, $ChampCoordY)
 EndFunc
