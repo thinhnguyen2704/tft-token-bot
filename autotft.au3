@@ -54,6 +54,7 @@ Func Auto($TimeInMs)
 		While TimerDiff($timer) <= $Clock
 			For $i = 1 To 5
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
+				Sleep(1000)
 			Next
 			;Buy exp 
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4, 40)
@@ -63,7 +64,7 @@ Func Auto($TimeInMs)
 			Next
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
-			Sleep(4000)
+			Sleep(5000)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
 			Sleep(3000)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.4)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
@@ -121,7 +122,7 @@ Func Auto($TimeInMs)
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
 				Sleep(500)
 			EndIf
-			Sleep(10000)
+			Sleep(15000)
 		WEnd	
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
@@ -137,7 +138,7 @@ Func Auto($TimeInMs)
 			Sleep(500)
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1, 10)
 		EndIf
-		Sleep(10000)
+		Sleep(20000)
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
@@ -145,7 +146,7 @@ EndFunc
 
 #Region
 $Menu = GUICreate("Wind yêu Snow", 298, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Surrender after ", 32, 16, 233, 97)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu hoa linh!!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
 $StartNStop = GUICtrlCreateButton("Start", 168, 40, 73, 25)
