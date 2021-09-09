@@ -7,7 +7,7 @@
 
 
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_Icon=..\snowflake.png 
+#AutoIt3Wrapper_Icon=..\snowflake.ico 
 #AutoIt3Wrapper_Compile_Both=y
 #AutoIt3Wrapper_Res_Comment=Made by m1nt.
 #AutoIt3Wrapper_Res_ProductName=TFT Auto BOT
@@ -59,7 +59,13 @@ Func Auto($TimeInMs)
 				Sleep(1000)
 			EndIf
 			
-			CollectMysteryBox()
+			;Collect mystery boxes
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
+			Sleep(4000)
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.28)), 1, 10)
+			Sleep(3000)
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.4)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1, 10)
+			Sleep(3000)
 			
 			;Buy exp 
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4)
@@ -92,18 +98,8 @@ Func Auto($TimeInMs)
 	Sleep(10000)
 EndFunc   ;==>autobot
 
-;This function controls the pet to collect mystery boxes
-Func CollectMysteryBox() 
-	MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
-	Sleep(4000)
-	MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.28)), 1, 10)
-	Sleep(3000)
-	MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.4)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1, 10)
-	Sleep(3000)
-EndFunc
-
 ;This function drag items from base to put them on champions
-Func UseItem($Num)
+Func UseItem()
 	Local $ChampCoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 *  Random(0, 7, 1))))
 	Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.63)
 	Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.0875)
@@ -114,6 +110,7 @@ Func UseItem($Num)
 	Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.68)	
 	MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $ChampCoordX, $ChampCoordY)
 	MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $ChampCoordX, $ChampCoordY)
+	MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $ChampCoordX, $ChampCoordY)
 EndFunc
 
 ;This function surrend and quit the match
