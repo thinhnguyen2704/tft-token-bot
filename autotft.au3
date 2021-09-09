@@ -52,13 +52,17 @@ Func Auto($TimeInMs)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
-			If TimerDiff($timer) < 300000 Then
-				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy one champ each time to defend
-				Sleep(1000)
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * Random(0, 4, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
-				Sleep(1000)
-			EndIf
-			
+			For $i = 1 To 5
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
+			Next
+
+			;Buy exp 
+			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4, 40)
+
+			;#### Arrange champs on the last row with position from left to right 
+			For $j = 1 To 7 
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.068 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
+			Next
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1, 10)
 			Sleep(4000)
@@ -68,26 +72,16 @@ Func Auto($TimeInMs)
 			Sleep(3000)
 	
 			If TimerDiff($timer) >= 300000 Then ;After 5 mins
-				For $i = 1 To 5
-					MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
-				Next
 
-				;Buy exp 
-				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4)
-
-				;#### Arrange champs on the last row with position from left to right 
-				For $j = 1 To 7 
-					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
-				Next
 				
 				;####Drag items from base to champs
 				;UseItem()
 				Local $ChampCoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 *  Random(0, 6, 1))))
 				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.63)
-				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.0875)
-				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.7)
-				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.108)
-				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.68)
+				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.092)
+				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.687)
+				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
+				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.66)
 				Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.0875)
 				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.667)
 				Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.108)
@@ -100,20 +94,30 @@ Func Auto($TimeInMs)
 				Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.577)
 				Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.2)
 				Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.577)
-				Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.171)
-				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.551)
-				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.171)
-				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.551)			
+				Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1228)
+				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.538)
+				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.156)
+				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.538)			
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 				MouseClickDrag("left", $Item4CoordX, $Item4CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 				MouseClickDrag("left", $Item5CoordX, $Item5CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 				MouseClickDrag("left", $Item6CoordX, $Item6CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 				MouseClickDrag("left", $Item7CoordX, $Item7CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 				MouseClickDrag("left", $Item8CoordX, $Item8CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 				MouseClickDrag("left", $Item10CoordX, $Item10CoordY, $ChampCoordX, $ChampCoordY)
+				Sleep(500)
 			EndIf
 
 			;Check if HP reaches 0 after 15 mins
