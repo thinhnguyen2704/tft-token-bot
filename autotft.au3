@@ -96,14 +96,18 @@ Func autobot($TimeInMs)
 				;~ MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.625)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
 				;~ ;Seventh pile of last row
 				;~ MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.458)), ($pxdifference[1] + Round($gamesz[1] * 0.53)), ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
-				
+
 				;### End arrange champs
-				
+
 				;####Drag items from base to champs
-
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.0875)), ($pxdifference[1] + Round($gamesz[1] * 0.726), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 *  Random(0, 7, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.108)), ($pxdifference[1] + Round($gamesz[1] * 0.71), ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.63)))
-
+				Local $ChampCoordX = ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.075 *  Random(0, 7, 1)))))
+				Local $ChampCoordY = ($pxdifference[1] + Round($gamesz[1] * 0.63))
+				Local $Item1CoordX = ($pxdifference[0] + Round($gamesz[0] * 0.0875))
+				Local $Item1CoordY = ($pxdifference[1] + Round($gamesz[1] * 0.726)
+				Local $Item2CoordX = ($pxdifference[0] + Round($gamesz[0] * 0.108))
+				Local $Item2CoordY = ($pxdifference[1] + Round($gamesz[1] * 0.71))
+				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $ChampCoordX, $ChampCoordY)
+				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $ChampCoordX, $ChampCoordY)
 			EndIf
 
 			;Check if HP reaches 0 after 15 mins
