@@ -72,7 +72,7 @@ Func Auto($TimeInMs)
 			;Things to do after 5 mins
 			If TimerDiff($timer) >= 300000 Then 
 				;####Drag items from base to champs
-				;Only for Spirit Blossom arena
+				;Only for Fate arenas
 				;UseItem()
 				Local $ChampCoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 6, 1))))
 				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
@@ -146,7 +146,7 @@ EndFunc
 
 #Region
 $Menu = GUICreate("Wind yêu Snow", 298, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu hoa linh!!!! ", 32, 16, 233, 97)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Định mệnh!!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
 $StartNStop = GUICtrlCreateButton("Start", 168, 40, 73, 25)
