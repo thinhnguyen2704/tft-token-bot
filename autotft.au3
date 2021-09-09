@@ -24,13 +24,6 @@ Global $clientsz = WinGetClientSize("League of Legends") ;get the client width a
 Global $matchlength, $TimeInMs, $Clock
 
 Func Auto($TimeInMs)
-	Local $gamesz = WinGetClientSize("League of Legends (TM) Client")
-	Local $pxdifference[2] = [Round((@DesktopWidth - $gamesz[0]) / 2), Round((@DesktopHeight - $gamesz[1]) / 2)]
-	Local $topmiddle[2] = [@DesktopWidth / 2, ($pxdifference[1] + 3)]
-	Local $pxchecksum = PixelChecksum($topmiddle[0] - 5, $topmiddle[1] + 5, $topmiddle[0] + 5, $topmiddle[1] + 10)
-	Local $timer = TimerInit()
-	$Clock = $TimeInMs
-
 	WinActivate("League of Legends")
 	While Not WinExists("League of Legends (TM) Client")
 		Sleep(1500)
@@ -45,6 +38,12 @@ Func Auto($TimeInMs)
 	WinActivate("League of Legends (TM) Client")
 	Sleep(3000)
 	
+	Local $gamesz = WinGetClientSize("League of Legends (TM) Client")
+	Local $pxdifference[2] = [Round((@DesktopWidth - $gamesz[0]) / 2), Round((@DesktopHeight - $gamesz[1]) / 2)]
+	Local $topmiddle[2] = [@DesktopWidth / 2, ($pxdifference[1] + 3)]
+	Local $pxchecksum = PixelChecksum($topmiddle[0] - 5, $topmiddle[1] + 5, $topmiddle[0] + 5, $topmiddle[1] + 10)
+	Local $timer = TimerInit()
+	$Clock = $TimeInMs
 	While $pxchecksum = PixelChecksum($topmiddle[0] - 5, $topmiddle[1] + 5, $topmiddle[0] + 5, $topmiddle[1] + 10)
 		Sleep(7000) ;every 7 sec check if the game is ready
 	WEnd
