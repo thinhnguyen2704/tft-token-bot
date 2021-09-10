@@ -15,12 +15,12 @@ Mình chỉ là một học sinh. Thấu hiểu việc phải ôn thi, làm nhi�
 
   Đánh thắng 1 **SMR** khoảng nửa tiếng được **10 kỉ vật** thì rất oải và mệt mỏi, thay vào đó ta có thể treo **TFT** 24/24, số kỉ vật xếp theo thứ hạng.
 
- |  Hạng              |Số kỉ vật                         |
-|----------------|-----------------------------|
-|1 & 2           |         8 kỉ vật            |
-|3  & 4          |6 kỉ vật            |
-|5 & 6           | 4 kỉ vật|
-|7 & 8           | 2 kỉ vật                    |
+|  Hạng       | Số kỉ vật  |
+|-------------|------------|
+|1 & 2        | 8 kỉ vật   |
+|3 & 4        | 6 kỉ vật   |
+|5 & 6        | 4 kỉ vật   |
+|7 & 8        | 2 kỉ vật   |
 
 ***Tại  sao phải dùng script?*** Điều kiện nhận kỉ vật là tham gia đủ 15 phút. Nếu bạn AFK chay trong trận với 0 quân cờ trong màn đấu thì sẽ **chết trước phút 15**. Nhiều người bán script với giá rơi vào khoảng **25K/ tuần**, còn với những bạn nào không có tiền mua có thể dùng script này của mình, viết bằng AutoIT.
 
