@@ -81,7 +81,7 @@ Func Auto($TimeInMs)
 			;Sell champions purchased at the beginning to buy higher value champions
 			If TimerDiff($timer) > 540000 And TimerDiff($timer) < 600000 Then
 				For $snow = 1 To 10 
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.23)), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
+					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.97)))
 				Next
 			EndIf
 
@@ -172,8 +172,8 @@ Func Auto($TimeInMs)
 EndFunc
 
 #Region
-$Menu = GUICreate("Wind yêu Snow", 298, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Định mệnh!!!! ", 32, 16, 233, 97)
+$Menu = GUICreate("Bot TFT ", 298, 154, -1, -1)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Ngày Phán Quyết!!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
 $StartNStop = GUICtrlCreateButton("Start", 168, 40, 73, 25)
