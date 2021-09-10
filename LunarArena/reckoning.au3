@@ -173,7 +173,7 @@ EndFunc
 
 #Region
 $Menu = GUICreate("Bot TFT ", 298, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Ngày Phán Quyết!!!! ", 32, 16, 233, 97)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Tết Nguyên Đán 2021!!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
 $StartNStop = GUICtrlCreateButton("Start", 168, 40, 73, 25)
