@@ -78,9 +78,10 @@ Func Auto($TimeInMs)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 			Sleep(3000)
 
+			;Sell champions purchased at the beginning to buy higher value champions
 			If TimerDiff($timer) > 540000 And TimerDiff($timer) < 600000 Then
 				For $snow = 1 To 10 
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.23)), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.97)))
 			EndIf
 
 			;Things to do after 10 mins
