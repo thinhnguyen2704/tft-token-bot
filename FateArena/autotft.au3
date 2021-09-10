@@ -52,8 +52,8 @@ Func Auto($TimeInMs)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
-			For $i = 1 To 5
-				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
+			For $snowa = 1 To 5
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($snowa - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
 				Sleep(1000)
 			Next
 			;Buy exp 
@@ -64,9 +64,9 @@ Func Auto($TimeInMs)
 			Sleep(5000)	
 			
 			;#### Arrange champs on the last row with position from left to right 
-			For $j = 1 To 7
+			For $hna = 1 To 7
 				;Move from second last row to last row 
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($hna - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
 			Next
 			;Move from third last row to last row
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
@@ -78,18 +78,18 @@ Func Auto($TimeInMs)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 			Sleep(3000)
 
-			;~ If TimerDiff($timer) > 540000 And TimerDiff($timer) < 600000 Then 
-
-			;~ EndIf
+			If TimerDiff($timer) > 540000 And TimerDiff($timer) < 600000 Then
+				For $snow = 1 To 10 
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.23)), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
+			EndIf
 
 			;Things to do after 10 mins
 			If TimerDiff($timer) >= 600000 Then 
 				;####Drag items from base to champs
 				;Only for Fate arenas
-				;UseItem()
 				Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
-				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
 				Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
+				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
 				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.087)
 				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.687)
 				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.112)
@@ -159,11 +159,11 @@ Func Auto($TimeInMs)
 EndFunc
 
 #Region
-$Menu = GUICreate("Wind yêu Snow", 298, 154, -1, -1)
+$Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 298, 154, -1, -1)
 $Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Định mệnh!!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
-$StartNStop = GUICtrlCreateButton("Start", 168, 40, 73, 25)
+$StartNStop = GUICtrlCreateButton("Bắt đầu", 168, 40, 73, 25)
 Global $Start = False 
 $Note = GUICtrlCreateLabel("Love you to the infinity and beyond!!!!", 48, 72, 202, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
