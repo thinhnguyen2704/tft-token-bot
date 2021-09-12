@@ -92,34 +92,24 @@ Func Auto($TimeInMs)
 				Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
 				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
 				Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
-
 				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.092)
 				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.72)
-
 				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.116)
 				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.704)
-
 				Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.0958)
 				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.681)
-
 				Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1145)
 				Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.648)	
-
 				Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1458)
 				Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.648)
-
 				Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.106)
 				Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.629)
-
 				Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.135)
 				Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.629)
-
 				Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.16)
 				Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.629)
-
 				Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1125)
 				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5925)
-
 				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1416)
 				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5925)	
 
