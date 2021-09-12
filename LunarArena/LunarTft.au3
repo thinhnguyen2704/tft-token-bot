@@ -79,14 +79,14 @@ Func Auto($TimeInMs)
 			Sleep(3000)
 
 			;Sell champions purchased at the beginning to buy higher value champions
-			If TimerDiff($timer) > 540000 And TimerDiff($timer) < 600000 Then
-				For $snow = 1 To 9 
+			If TimerDiff($timer) > 480000 And TimerDiff($timer) < 540000 Then
+				For $snow = 1 To 9
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
 				Next
 			EndIf
 
 			;Things to do after 10 mins
-			If TimerDiff($timer) >= 600000 Then 
+			If (TimerDiff($timer) > 540000 And TimerDiff($timer) < 660000) Or (TimerDiff($timer) > 960000 And TimerDiff($timer) < 1080000) Then 
 				;####Drag items from base to champs
 				;Only for Reckoning Arenas
 				Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))

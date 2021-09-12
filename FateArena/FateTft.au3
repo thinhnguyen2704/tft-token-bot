@@ -59,32 +59,32 @@ Func Auto($TimeInMs)
 
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
-			Sleep(5000)	
-			
+
 			;#### Arrange champs on the last row with position from left to right 
 			For $hna = 1 To 7
 				;Move from second last row to last row 
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($hna - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
 			Next
+
+			;Continue to collect mystery boxes 			
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
+
 			;Move from third last row to last row
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
 
 			;Continue to collect mystery boxes 			
 			Send("f")
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
-			Sleep(5000)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
-			Sleep(5000)
 
 			;Sell champions purchased at the beginning to buy higher value champions
-			If TimerDiff($timer) > 540000 And TimerDiff($timer) < 600000 Then
+			If TimerDiff($timer) > 480000 And TimerDiff($timer) < 540000 Then
 				For $snow = 1 To 9
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
 				Next
 			EndIf
 
 			;Things to do after 10 mins
-			If TimerDiff($timer) >= 600000 Then 
+			If (TimerDiff($timer) > 540000 And TimerDiff($timer) < 660000) Or (TimerDiff($timer) > 960000 And TimerDiff($timer) < 1080000) Then 
 				;####Drag items from base to champs
 				;Only for Fate arenas
 				Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
@@ -134,9 +134,8 @@ Func Auto($TimeInMs)
 			;Check if HP reaches 0 after 15 mins
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.553)), 1)
-				Sleep(500)
 			EndIf
-			Sleep(20000)
+			Sleep(300000)
 		WEnd	
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  

@@ -77,14 +77,14 @@ Func Auto($TimeInMs)
 			Send("f")
 
 			;Sell champions purchased at the beginning to buy higher value champions
-			If TimerDiff($timer) > 540000 And TimerDiff($timer) < 600000 Then
+			If TimerDiff($timer) > 480000 And TimerDiff($timer) < 540000 Then
 				For $snow = 1 To 9
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
 				Next
 			EndIf
 
 			;Things to do after 10 mins
-			If TimerDiff($timer) >= 600000 Then 
+			If (TimerDiff($timer) > 540000 And TimerDiff($timer) < 660000) Or (TimerDiff($timer) > 960000 And TimerDiff($timer) < 1080000) Then 
 				;####Drag items from base to champs
 				;Only for Fate arenas
 				Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
@@ -152,7 +152,7 @@ Func Auto($TimeInMs)
 			Sleep(500)
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
 		EndIf
-		Sleep(20000)
+		Sleep(60000)
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
