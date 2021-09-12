@@ -72,9 +72,9 @@ Func Auto($TimeInMs)
 			;Continue to collect mystery boxes 			
 			Send("f")
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
-			Sleep(3000)
+			Sleep(5000)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
-			Sleep(3000)
+			Sleep(5000)
 
 			;Sell champions purchased at the beginning to buy higher value champions
 			If TimerDiff($timer) > 540000 And TimerDiff($timer) < 600000 Then
@@ -152,7 +152,7 @@ Func Auto($TimeInMs)
 			Sleep(500)
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
 		EndIf
-		Sleep(20000)
+		Sleep(60000)
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
