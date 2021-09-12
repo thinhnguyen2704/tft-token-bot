@@ -52,35 +52,33 @@ Func Auto($TimeInMs)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
-			For $i = 1 To 5
-				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
+			For $snowa = 1 To 5
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($snowa - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
 				Sleep(1000)
 			Next
-			;Buy exp 
-			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4, 50)
-			
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
-			Sleep(5000)	
 			
 			;#### Arrange champs on the last row with position from left to right 
-			For $j = 1 To 7
+			For $hna = 1 To 7
 				;Move from second last row to last row 
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($hna - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
 			Next
-			;Move from third last row to last row
-			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
 
 			;Continue to collect mystery boxes 			
 			Send("f")
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
-			Sleep(3000)
+
+			;Move champions from third last row to last row
+			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
+
+			;Continue to collect mystery boxes 			
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
-			Sleep(3000)
+			Send("f")
 
 			;Sell champions purchased at the beginning to buy higher value champions
 			If TimerDiff($timer) > 540000 And TimerDiff($timer) < 600000 Then
-				For $snow = 1 To 9 
+				For $snow = 1 To 9
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
 				Next
 			EndIf
@@ -88,31 +86,30 @@ Func Auto($TimeInMs)
 			;Things to do after 10 mins
 			If TimerDiff($timer) >= 600000 Then 
 				;####Drag items from base to champs
-				;Only for Reckoning Arenas
+				;Only for Fate arenas
 				Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
 				Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
 				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
-				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.092)
-				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.72)
-				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.116)
-				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.704)
-				Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.0958)
-				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.681)
-				Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1145)
-				Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.648)	
-				Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1458)
-				Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.648)
-				Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.106)
-				Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.629)
-				Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.135)
-				Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.629)
-				Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.16)
-				Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.629)
-				Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1125)
-				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5925)
-				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1416)
-				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5925)	
-
+				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.087)
+				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.687)
+				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.112)
+				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.662)
+				Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.101)
+				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.631)
+				Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.117)
+				Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.606)	
+				Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.149)
+				Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.606)
+				Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.112)
+				Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.578)
+				Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.140)
+				Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.578)
+				Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.166)
+				Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.578)
+				Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.119)
+				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.543)
+				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.147)
+				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.543)			
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)			
 				Send("f")
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
@@ -139,7 +136,7 @@ Func Auto($TimeInMs)
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.553)), 1)
 				Sleep(500)
 			EndIf
-			Sleep(15000)
+			Sleep(20000)
 		WEnd	
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
@@ -155,18 +152,18 @@ Func Auto($TimeInMs)
 			Sleep(500)
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
 		EndIf
-		Sleep(10000)
+		Sleep(20000)
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
 EndFunc
 
 #Region
-$Menu = GUICreate("Bot TFT ", 298, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Tết Nguyên Đán 2021!!!! ", 32, 16, 233, 97)
+$Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 298, 154, -1, -1)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu DJ Trâu!!!! ", 32, 16, 274, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
-$StartNStop = GUICtrlCreateButton("Start", 168, 40, 73, 25)
+$StartNStop = GUICtrlCreateButton("Bắt đầu", 168, 40, 73, 25)
 Global $Start = False 
 $Note = GUICtrlCreateLabel("Love you to the infinity and beyond!!!!", 48, 72, 202, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)

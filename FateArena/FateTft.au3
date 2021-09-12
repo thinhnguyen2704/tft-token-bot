@@ -133,7 +133,7 @@ Func Auto($TimeInMs)
 			EndIf
 			;Check if HP reaches 0 after 15 mins
 			If TimerDiff($timer) >= 900000 Then 
-				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.432)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
+				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.553)), 1)
 				Sleep(500)
 			EndIf
 			Sleep(20000)
