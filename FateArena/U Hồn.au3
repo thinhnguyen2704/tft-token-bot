@@ -1,4 +1,4 @@
-﻿#include <ButtonConstants.au3>
+#include <ButtonConstants.au3>
 #include <EditConstants.au3>
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
@@ -75,7 +75,7 @@ Func Auto($TimeInMs)
 
 			;Move from third last row to last row
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
-			Sleep(4000)
+            Sleep(4000)
 
 			;Continue to collect mystery boxes 			
 			Send("f")
@@ -91,30 +91,27 @@ Func Auto($TimeInMs)
 			;Things to do after 10 mins
 			If (TimerDiff($timer) > 540000 And TimerDiff($timer) < 660000) Or (TimerDiff($timer) > 960000 And TimerDiff($timer) < 1080000) Then 
 				;####Drag items from base to champs
-				;Only for Reckoning Arenas
-				Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
-				Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
-				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
-				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.092)
-				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.72)
-				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.116)
-				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.704)
-				Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.0958)
-				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.681)
-				Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1145)
-				Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.648)	
-				Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1458)
-				Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.648)
-				Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.106)
-				Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.629)
-				Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.135)
-				Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.629)
-				Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.16)
-				Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.629)
-				Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1125)
-				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5925)
-				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1416)
-				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5925)	
+				;Only for Fate arenas
+				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.157)
+				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.718)
+				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.174)
+				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.682)
+				Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.165)
+				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.646)
+				Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.182)
+				Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.615)	
+				Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.211)
+				Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.615)
+				Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.171)
+				Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5846)
+				Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.2)
+				Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5846)
+				Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.228)
+				Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5846)
+				Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1228)
+				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)
+				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1514)
+				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)			
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)			
 				Send("f")
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
