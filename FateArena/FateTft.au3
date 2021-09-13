@@ -49,6 +49,10 @@ Func Auto($TimeInMs)
 	Local $timer = TimerInit()
 	$Clock = $TimeInMs
 	Sleep(60000) ;wait for the match to start
+	
+	Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
+	Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
+	Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
@@ -87,9 +91,6 @@ Func Auto($TimeInMs)
 			If (TimerDiff($timer) > 540000 And TimerDiff($timer) < 660000) Or (TimerDiff($timer) > 960000 And TimerDiff($timer) < 1080000) Then 
 				;####Drag items from base to champs
 				;Only for Fate arenas
-				Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
-				Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
-				Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
 				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.157)
 				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.718)
 				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.174)
@@ -135,7 +136,7 @@ Func Auto($TimeInMs)
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.553)), 1)
 			EndIf
-			Sleep(300000)
+			Sleep(44000)
 		WEnd	
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
@@ -151,7 +152,7 @@ Func Auto($TimeInMs)
 			Sleep(500)
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
 		EndIf
-		Sleep(60000)
+		Sleep(600000)
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
