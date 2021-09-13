@@ -49,6 +49,10 @@ Func Auto($TimeInMs)
 	Local $timer = TimerInit()
 	$Clock = $TimeInMs
 	Sleep(60000) ;wait for the match to start
+	
+	Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
+	Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
+	Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
@@ -56,9 +60,10 @@ Func Auto($TimeInMs)
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($snowa - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
 				Sleep(1000)
 			Next
+
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
-			
+
 			;#### Arrange champs on the last row with position from left to right 
 			For $hna = 1 To 7
 				;Move from second last row to last row 
@@ -66,15 +71,14 @@ Func Auto($TimeInMs)
 			Next
 
 			;Continue to collect mystery boxes 			
-			Send("f")
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
 
-			;Move champions from third last row to last row
+			;Move from third last row to last row
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
 
 			;Continue to collect mystery boxes 			
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 			Send("f")
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 
 			;Sell champions purchased at the beginning to buy higher value champions
 			If TimerDiff($timer) > 480000 And TimerDiff($timer) < 540000 Then
@@ -129,14 +133,13 @@ Func Auto($TimeInMs)
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)
 				Sleep(500)
 				MouseClickDrag("left", $Item10CoordX, $Item10CoordY, $Champ2CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 			EndIf
 			;Check if HP reaches 0 after 15 mins
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.553)), 1)
-				Sleep(500)
 			EndIf
-			Sleep(20000)
+			Sleep(44000)
 		WEnd	
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
@@ -152,15 +155,15 @@ Func Auto($TimeInMs)
 			Sleep(500)
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
 		EndIf
-		Sleep(60000)
+		Sleep(600000)
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
 EndFunc
 
 #Region
-$Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 298, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu DJ Trâu!!!! ", 32, 16, 274, 97)
+$Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 400, 154, -1, -1)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Định mệnh!!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
 $StartNStop = GUICtrlCreateButton("Bắt đầu", 168, 40, 73, 25)

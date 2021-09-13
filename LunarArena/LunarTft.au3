@@ -49,34 +49,36 @@ Func Auto($TimeInMs)
 	Local $timer = TimerInit()
 	$Clock = $TimeInMs
 	Sleep(60000) ;wait for the match to start
+	
+	Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
+	Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
+	Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
-			For $i = 1 To 5
-				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($i - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
+			For $snowa = 1 To 5
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($snowa - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
 				Sleep(1000)
 			Next
-			;Buy exp 
-			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.1914)), ($pxdifference[1] + Round($gamesz[1] * 0.893)), 4, 50)
-			
+
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
-			Sleep(5000)	
-			
+
 			;#### Arrange champs on the last row with position from left to right 
-			For $j = 1 To 7
+			For $hna = 1 To 7
 				;Move from second last row to last row 
-				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($j - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
+				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($hna - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
 			Next
+
+			;Continue to collect mystery boxes 			
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
+
 			;Move from third last row to last row
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
 
 			;Continue to collect mystery boxes 			
 			Send("f")
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
-			Sleep(3000)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
-			Sleep(3000)
 
 			;Sell champions purchased at the beginning to buy higher value champions
 			If TimerDiff($timer) > 480000 And TimerDiff($timer) < 540000 Then
@@ -112,7 +114,6 @@ Func Auto($TimeInMs)
 				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5925)
 				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1416)
 				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5925)	
-
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)			
 				Send("f")
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
@@ -132,14 +133,13 @@ Func Auto($TimeInMs)
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)
 				Sleep(500)
 				MouseClickDrag("left", $Item10CoordX, $Item10CoordY, $Champ2CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 			EndIf
 			;Check if HP reaches 0 after 15 mins
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.553)), 1)
-				Sleep(500)
 			EndIf
-			Sleep(15000)
+			Sleep(44000)
 		WEnd	
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
@@ -155,18 +155,18 @@ Func Auto($TimeInMs)
 			Sleep(500)
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
 		EndIf
-		Sleep(10000)
+		Sleep(600000)
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
 EndFunc
 
 #Region
-$Menu = GUICreate("Bot TFT ", 298, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Tết Nguyên Đán 2021!!!! ", 32, 16, 233, 97)
+$Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 400, 154, -1, -1)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho bộ sàn đấu Định mệnh!!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
-$StartNStop = GUICtrlCreateButton("Start", 168, 40, 73, 25)
+$StartNStop = GUICtrlCreateButton("Bắt đầu", 168, 40, 73, 25)
 Global $Start = False 
 $Note = GUICtrlCreateLabel("Love you to the infinity and beyond!!!!", 48, 72, 202, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
