@@ -89,7 +89,7 @@ Func Auto($TimeInMs)
 			EndIf
 
 			;Things to do after 10 mins
-			If (TimerDiff($timer) > 540000 And TimerDiff($timer) < 660000) Or (TimerDiff($timer) > 960000 And TimerDiff($timer) < 1080000) Then 
+			If (TimerDiff($timer) >= 540000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 960000 And TimerDiff($timer) <= 1080000) Then 
 				;####Drag items from base to champs
 				;Only for Fate arenas
 				Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
