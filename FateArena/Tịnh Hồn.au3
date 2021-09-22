@@ -87,7 +87,6 @@ Func Auto($TimeInMs)
 			;Things to do after 10 mins
 			If ((TimerDiff($timer) >= 540000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 960000 And TimerDiff($timer) <= 1080000)) Then
 				;####Drag items from base to champs
-				;Tịnh Hồn arena
 				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.157)
 				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.718)
 				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.174)
@@ -133,7 +132,7 @@ Func Auto($TimeInMs)
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.553)), 1)
 			EndIf
-			Sleep(40000)
+			Sleep(35000)
 		WEnd	
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
