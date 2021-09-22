@@ -60,7 +60,7 @@ Func Auto($TimeInMs)
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($snowa - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
 				Sleep(1000)
 			Next
-
+			Send("f")
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
 
@@ -82,16 +82,16 @@ Func Auto($TimeInMs)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 
 			;Sell champions purchased at the beginning to buy higher value champions
-			If TimerDiff($timer) > 480000 And TimerDiff($timer) < 540000 Then
+			If TimerDiff($timer) >= 420000 And TimerDiff($timer) <= 480000 Then
 				For $snow = 1 To 9
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
 				Next
 			EndIf
 
 			;Things to do after 10 mins
-			If (TimerDiff($timer) > 540000 And TimerDiff($timer) < 660000) Or (TimerDiff($timer) > 960000 And TimerDiff($timer) < 1080000) Then 
+			If ((TimerDiff($timer) >= 540000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 960000 And TimerDiff($timer) <= 1080000)) Then 
 				;####Drag items from base to champs
-				;Only for Fate arenas
+				;U Hồn arena
 				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
 				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
 				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
@@ -137,7 +137,7 @@ Func Auto($TimeInMs)
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.553)), 1)
 			EndIf
-			Sleep(44000)
+			Sleep(40000)
 		WEnd	
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
