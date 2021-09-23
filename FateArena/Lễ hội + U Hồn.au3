@@ -83,6 +83,7 @@ Func Auto($TimeInMs)
 
 			;Sell champions purchased at the beginning to buy higher value champions
 			If TimerDiff($timer) >= 420000 And TimerDiff($timer) <= 480000 Then
+				Send("f")
 				For $snow = 1 To 9
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
 				Next
@@ -91,6 +92,7 @@ Func Auto($TimeInMs)
 			;Things to do after 10 mins
 			If ((TimerDiff($timer) >= 540000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 960000 And TimerDiff($timer) <= 1080000)) Then 
 				;####Drag items from base to champs
+                ;U Hồn + (Lễ Hội)
 				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
 				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
 				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
@@ -114,17 +116,17 @@ Func Auto($TimeInMs)
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)			
 				Send("f")
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $Champ1CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item4CoordX, $Item4CoordY, $Champ1CoordX, $ChampCoordY)
 				Send("f")
 				MouseClickDrag("left", $Item5CoordX, $Item5CoordY, $Champ1CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item6CoordX, $Item6CoordY, $Champ2CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item7CoordX, $Item7CoordY, $Champ2CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item8CoordX, $Item8CoordY, $Champ2CoordX, $ChampCoordY)
 				Send("f")
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)

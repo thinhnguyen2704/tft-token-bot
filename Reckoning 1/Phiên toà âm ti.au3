@@ -64,67 +64,69 @@ Func Auto($TimeInMs)
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
 
-			;#### Arrange champs on the last row with position from left to right
+			;#### Arrange champs on the last row with position from left to right 
 			For $hna = 1 To 7
 				;Move from second last row to last row 
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($hna - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
 			Next
 
-			;Continue to collect mystery boxes
+			;Continue to collect mystery boxes 			
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
 
 			;Move from third last row to last row
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
-			Sleep(4000)
+            Sleep(4000)
 
-			;Continue to collect mystery boxes
+			;Continue to collect mystery boxes 			
 			Send("f")
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 
 			;Sell champions purchased at the beginning to buy higher value champions
 			If TimerDiff($timer) >= 420000 And TimerDiff($timer) <= 480000 Then
+				Send("f")
 				For $snow = 1 To 9
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
 				Next
 			EndIf
 
 			;Things to do after 10 mins
-			If ((TimerDiff($timer) >= 540000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 960000 And TimerDiff($timer) <= 1080000)) Then
+			If ((TimerDiff($timer) >= 540000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 960000 And TimerDiff($timer) <= 1080000)) Then 
 				;####Drag items from base to champs
-                Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.133)
-                Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.714)
-                Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.153)
-                Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.684)
-                Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1416)
-                Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.6428)
-                Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1583)
-                Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.619)
-                Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1916)
-                Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.619)
-                Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.15)
-                Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5952)
-                Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.18)
-                Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5952)
-                Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.21)
-                Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5952)
-                Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.153)
-                Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.553)
-                Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.183)
-                Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.553)
-				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)
+                ;U Hồn + (Lễ Hội)
+				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
+				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
+				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
+				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.656)
+				Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.107)
+				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.633)
+				Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.125)
+				Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)	
+				Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.164)
+				Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)
+				Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.111)
+				Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
+				Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.14)
+				Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
+				Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.168)
+				Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
+				Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.117)
+				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
+				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1457)
+				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)			
+				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)			
 				Send("f")
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $Champ1CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item4CoordX, $Item4CoordY, $Champ1CoordX, $ChampCoordY)
 				Send("f")
 				MouseClickDrag("left", $Item5CoordX, $Item5CoordY, $Champ1CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item6CoordX, $Item6CoordY, $Champ2CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item7CoordX, $Item7CoordY, $Champ2CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item8CoordX, $Item8CoordY, $Champ2CoordX, $ChampCoordY)
 				Send("f")
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)

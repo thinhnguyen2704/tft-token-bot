@@ -85,7 +85,7 @@
                 Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1457)
                 Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
 
-                ;DJ Trâu arena
+                ;DJ Trâu 
                 Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.087)
                 Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.687)
                 Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.112)
@@ -107,7 +107,7 @@
                 Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.147)
                 Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.543)
 
-                ;Phố Tết Arena
+                ;Phố Tết 
                 Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.092)
                 Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.72)
                 Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.116)

@@ -50,6 +50,10 @@ Func Auto($TimeInMs)
 	$Clock = $TimeInMs
 	Sleep(60000) ;wait for the match to start
 	
+	Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
+	Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
+	Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
+
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
 			For $snowa = 1 To 5
@@ -71,7 +75,7 @@ Func Auto($TimeInMs)
 
 			;Move from third last row to last row
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
-			Sleep(4000)
+            Sleep(4000)
 
 			;Continue to collect mystery boxes 			
 			Send("f")
@@ -79,48 +83,50 @@ Func Auto($TimeInMs)
 
 			;Sell champions purchased at the beginning to buy higher value champions
 			If TimerDiff($timer) >= 420000 And TimerDiff($timer) <= 480000 Then
+				Send("f")
 				For $snow = 1 To 9
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * ($snow - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
 				Next
 			EndIf
 
 			;Things to do after 10 mins
-			If ((TimerDiff($timer) >= 540000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 960000 And TimerDiff($timer) <= 1080000)) Then
+			If ((TimerDiff($timer) >= 540000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 960000 And TimerDiff($timer) <= 1080000)) Then 
 				;####Drag items from base to champs
-				Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.157)
-				Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.718)
-				Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.174)
-				Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.682)
-				Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.165)
-				Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.646)
-				Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.182)
-				Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.615)	
-				Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.211)
-				Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.615)
-				Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.171)
-				Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5846)
-				Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.2)
-				Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5846)
-				Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.228)
-				Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5846)
-				Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1785)
-				Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)
-				Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.207)
-				Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)			
+                ;Tịnh Hồn
+                Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.157)
+                Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.718)
+                Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.174)
+                Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.682)
+                Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.165)
+                Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.646)
+                Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.182)
+                Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.615)
+                Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.211)
+                Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.615)
+                Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.171)
+                Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5846)
+                Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.2)
+                Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5846)
+                Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.228)
+                Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5846)
+                Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1785)
+                Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)
+                Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.207)
+                Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)		
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)			
 				Send("f")
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $Champ1CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item4CoordX, $Item4CoordY, $Champ1CoordX, $ChampCoordY)
 				Send("f")
 				MouseClickDrag("left", $Item5CoordX, $Item5CoordY, $Champ1CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item6CoordX, $Item6CoordY, $Champ2CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item7CoordX, $Item7CoordY, $Champ2CoordX, $ChampCoordY)
-				Sleep(500)
+				Send("f")
 				MouseClickDrag("left", $Item8CoordX, $Item8CoordY, $Champ2CoordX, $ChampCoordY)
 				Send("f")
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)
@@ -156,7 +162,7 @@ EndFunc
 
 #Region
 $Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 400, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho sàn đấu Linh hồn!!!! ", 32, 16, 233, 97)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho sàn đấu Tịnh hồn!!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
 $StartNStop = GUICtrlCreateButton("Bắt đầu", 168, 40, 73, 25)
