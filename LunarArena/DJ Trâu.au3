@@ -53,6 +53,27 @@ Func Auto($TimeInMs)
 	Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
 	Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
 	Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
+    ;DJ Trâu 
+    Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.087)
+    Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.687)
+    Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.112)
+    Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.662)
+    Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.101)
+    Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.631)
+    Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.117)
+    Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.606)
+    Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.149)
+    Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.606)
+    Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.112)
+    Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.578)
+    Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.140)
+    Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.578)
+    Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.166)
+    Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.578)
+    Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.119)
+    Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.543)
+    Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.147)
+    Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.543)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
@@ -89,30 +110,8 @@ Func Auto($TimeInMs)
 				Next
 			EndIf
 
-			;Things to do after 10 mins
-			If ((TimerDiff($timer) >= 540000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 960000 And TimerDiff($timer) <= 1080000)) Then 
-				;####Drag items from base to champs
-                ;DJ Trâu 
-                Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.087)
-                Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.687)
-                Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.112)
-                Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.662)
-                Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.101)
-                Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.631)
-                Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.117)
-                Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.606)
-                Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.149)
-                Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.606)
-                Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.112)
-                Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.578)
-                Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.140)
-                Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.578)
-                Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.166)
-                Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.578)
-                Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.119)
-                Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.543)
-                Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.147)
-                Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.543)		
+			;####Drag items from base to champs
+			If ((TimerDiff($timer) >= 180000 And TimerDiff($timer) <= 360000) Or (TimerDiff($timer) >= 720000 And TimerDiff($timer) <= 900000)) Then 
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)			
 				Send("f")
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
@@ -123,6 +122,9 @@ Func Auto($TimeInMs)
 				Send("f")
 				MouseClickDrag("left", $Item5CoordX, $Item5CoordY, $Champ1CoordX, $ChampCoordY)
 				Send("f")
+			EndIf
+
+			If ((TimerDiff($timer) >= 360000 And TimerDiff($timer) <= 450000) Or (TimerDiff($timer) >= 900000 And TimerDiff($timer) <= 1080000)) Then
 				MouseClickDrag("left", $Item6CoordX, $Item6CoordY, $Champ2CoordX, $ChampCoordY)
 				Send("f")
 				MouseClickDrag("left", $Item7CoordX, $Item7CoordY, $Champ2CoordX, $ChampCoordY)
@@ -132,14 +134,16 @@ Func Auto($TimeInMs)
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)
 				Sleep(500)
 				MouseClickDrag("left", $Item10CoordX, $Item10CoordY, $Champ2CoordX, $ChampCoordY)
-				Send("f")
+				Send("f")			
 			EndIf
+
 			;Check if HP reaches 0 after 15 mins
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.553)), 1)
 			EndIf
-			Sleep(35000)
-		WEnd	
+
+			Sleep(30000)
+		WEnd
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
 			Send("{ENTER}")
@@ -184,7 +188,7 @@ While 1
 				GUICtrlSetData($StartNStop, "Stop")
 				$matchlength = StringSplit(GUICtrlRead($TimeInputBox), ":")
 				Global $MatchLengthInMilisecond = Int($matchlength[1]) * 60000 + Int($matchlength[2]) * 1000
-				While $Start == True
+				While 1
 					Auto($MatchLengthInMilisecond)
 				WEnd	
 			Else

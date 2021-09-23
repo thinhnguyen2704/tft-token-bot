@@ -53,28 +53,28 @@ Func Auto($TimeInMs)
 	Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 3, 1))))
 	Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 6, 1))))
 	Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
-    ;U Hồn + (Lễ Hội)
-    Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
-    Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
-    Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
-    Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.656)
-    Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1055)
-    Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.635)
-    Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.125)
-    Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)
-    Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.162)
-    Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)
-    Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.111)
-    Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
-    Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.14)
-    Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
-    Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.168)
-    Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
-    Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.117)
-    Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
-    Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1457)
-    Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
-	
+	;Quán rượu viễn tây
+	Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1571)
+	Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.7179)
+	Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1742)
+	Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
+	Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1642)
+	Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.6538)
+	Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1857)
+	Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.6282)
+	Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.2142)
+	Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.6282)
+	Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1714)
+	Local $Item6CoordY = $pxdifference[0] + Round($gamesz[0] * 0.6025)
+	Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.2)
+	Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.6025)
+	Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.2285)
+	Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.6025)
+	Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1771)
+	Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)
+	Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.2057)
+	Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)
+
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
 			For $snowa = 1 To 5
@@ -166,7 +166,7 @@ EndFunc
 
 #Region
 $Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 400, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho sàn đấu Lễ hội hoặc U hồn!!!! ", 32, 16, 233, 97)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho sàn Quán rượu viễn tây!!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
 $StartNStop = GUICtrlCreateButton("Bắt đầu", 168, 40, 73, 25)
@@ -188,7 +188,7 @@ While 1
 				GUICtrlSetData($StartNStop, "Stop")
 				$matchlength = StringSplit(GUICtrlRead($TimeInputBox), ":")
 				Global $MatchLengthInMilisecond = Int($matchlength[1]) * 60000 + Int($matchlength[2]) * 1000
-				While 1
+				While $Start == True
 					Auto($MatchLengthInMilisecond)
 				WEnd	
 			Else
