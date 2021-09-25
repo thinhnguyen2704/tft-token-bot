@@ -82,7 +82,7 @@ Func Auto($TimeInMs)
 		While TimerDiff($timer) <= $Clock
 			If  TimerDiff($timer) < 300000 Then
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
-			ElseIf
+			Else
 				For $snowa = 1 To 5
 					MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($snowa - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
 					Sleep(1000)
