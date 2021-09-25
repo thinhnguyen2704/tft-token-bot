@@ -80,23 +80,23 @@ Func Auto($TimeInMs)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
-			If  TimerDiff($timer) < 300000 Then
+			If TimerDiff($timer) < 300000 Then
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
 			Else
 				For $snowa = 1 To 5
 					MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($snowa - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
-					Sleep(1000)
+					Send("f")
 				Next
 				;Randomly sell champions
 				For $snow = 1 To 2
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * Random(0, 8, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
+					Send("f")
 				Next
 			EndIf
-			Send("f")
+
 			;Collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
 			Sleep(1000)
-			Send("f")
 
 			;#### Move champs on the last row from left to right
 			If TimerDiff($timer) <= 240000 Then 
@@ -104,29 +104,21 @@ Func Auto($TimeInMs)
 					;Move from second last row to 1st and 2nd pile of last row 
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($hna - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
 				Next
-			EndIf
-
-			;1st and 2nd pile
-			If TimerDiff($timer) >= 240000 And TimerDiff($timer) <= 360000 Then
+			ElseIf TimerDiff($timer) >= 240000 And TimerDiff($timer) <= 420000 Then
+				;3rd pile
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * 2)))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
-			EndIf
-
-			;3rd pile
-			If TimerDiff($timer) >= 360000 And TimerDiff($timer) <= 600000 Then
+			ElseIf TimerDiff($timer) >= 360000 And TimerDiff($timer) <= 600000 Then
+				;5th pile
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * 4)))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
-			EndIf
-
-			;6th pile
-			If TimerDiff($timer) >= 600000 And TimerDiff($timer) <= 840000 Then
+			ElseIf TimerDiff($timer) >= 600000 And TimerDiff($timer) <= 840000 Then
+				;6th pile				
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.642))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
-			EndIf
-
-			;7th pile 
-			If TimerDiff($timer) >= 840000 And TimerDiff($timer) <= 1140000 Then
+			ElseIf TimerDiff($timer) >= 840000 And TimerDiff($timer) <= 1140000 Then
+				;7th pile 
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * 6)))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
 			EndIf
 
-			;Continue to collect mystery boxes 			
+			;Continue to collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
 			Sleep(1000)
 
@@ -134,38 +126,28 @@ Func Auto($TimeInMs)
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
 			Sleep(4000)
 
-			;Continue to collect mystery boxes 			
-			Send("f")
+			;Continue to collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 
 			;####Drag items from base to champs
 			If ((TimerDiff($timer) >= 60000 And TimerDiff($timer) <= 240000) Or (TimerDiff($timer) >= 420000 And TimerDiff($timer) <= 600000) Or (TimerDiff($timer) >= 720000 And TimerDiff($timer) <= 900000)) Then 
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)
-				Send("f")
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
-				Send("f")
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $Champ1CoordX, $ChampCoordY)
-				Send("f")
 				MouseClickDrag("left", $Item4CoordX, $Item4CoordY, $Champ1CoordX, $ChampCoordY)
-				Send("f")
 				MouseClickDrag("left", $Item5CoordX, $Item5CoordY, $Champ1CoordX, $ChampCoordY)
-			EndIf
-
-			If TimerDiff($timer) >= 780000 And TimerDiff($timer) <= 1200000 Then
+			ElseIf TimerDiff($timer) >= 780000 And TimerDiff($timer) <= 1200000 Then
 				MouseClickDrag("left", $Item6CoordX, $Item6CoordY, $Champ2CoordX, $ChampCoordY)
-				Send("f")
 				MouseClickDrag("left", $Item7CoordX, $Item7CoordY, $Champ2CoordX, $ChampCoordY)
-				Send("f")
 				MouseClickDrag("left", $Item8CoordX, $Item8CoordY, $Champ2CoordX, $ChampCoordY)
-				Send("f")
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item10CoordX, $Item10CoordY, $Champ2CoordX, $ChampCoordY)
 			EndIf
 
-			;Check if HP reaches 0 after 15 mins
-			If TimerDiff($timer) >= 1140000 Then 
-				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.475)), 1)
-			EndIf
+			;~ ;Check if HP reaches 0 after 20 mins
+			;~ If TimerDiff($timer) >= 1200000 Then 
+			;~ 	MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.475)), 1)
+			;~ EndIf
 			Sleep(30000)
 		WEnd
 	WEnd
