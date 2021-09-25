@@ -18,10 +18,12 @@
 ;Mouse click delay----------------------------
 Opt("MouseClickDelay", 5)
 Opt("MouseClickDownDelay", 200)
+HotKeySet("{PAUSE}", "togglePause")
 
 ;Main part--------------------------------------
 Global $clientsz = WinGetClientSize("League of Legends") ;get the client width and height
 Global $matchlength, $TimeInMs, $Clock
+Global $isPaused = False
 
 Func Auto($TimeInMs)
 	WinActivate("League of Legends")
@@ -49,31 +51,32 @@ Func Auto($TimeInMs)
 	Local $timer = TimerInit()
 	$Clock = $TimeInMs
 	Sleep(60000) ;wait for the match to start
-	
-	Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 2, 1))))
-	Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 5, 1))))
-	Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
-    ;U Hồn + (Lễ Hội)
-    Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
-    Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
-    Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
-    Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.656)
-    Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1055)
-    Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.635)
-    Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.125)
-    Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)
-    Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.162)
-    Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)
-    Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.111)
-    Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
-    Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.14)
-    Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
-    Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.168)
-    Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
-    Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.117)
-    Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
-    Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1457)
-    Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
+
+	;Champ coords
+		Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(0, 2, 1))))
+		Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 *  Random(3, 5, 1))))
+		Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
+		;U Hồn + (Lễ Hội)
+		Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
+		Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
+		Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
+		Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.656)
+		Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1055)
+		Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.635)
+		Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.125)
+		Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)
+		Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.162)
+		Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)
+		Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.111)
+		Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
+		Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.14)
+		Local $Item7CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
+		Local $Item8CoordX = $pxdifference[0] + Round($gamesz[0] * 0.168)
+		Local $Item8CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
+		Local $Item9CoordX = $pxdifference[0] + Round($gamesz[0] * 0.117)
+		Local $Item9CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
+		Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1457)
+		Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
 
 	While WinExists("League of Legends (TM) Client")
 		While TimerDiff($timer) <= $Clock
@@ -119,7 +122,7 @@ Func Auto($TimeInMs)
 
 			;Move from third last row to last row
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
-            Sleep(4000)
+			Sleep(4000)
 
 			;Continue to collect mystery boxes 			
 			Send("f")
@@ -161,7 +164,7 @@ Func Auto($TimeInMs)
 			If TimerDiff($timer) >= 900000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.5)), 1)
 			EndIf
-			
+
 			Sleep(30000)
 		WEnd	
 		;Surrender if the ff time has passed
@@ -183,6 +186,13 @@ Func Auto($TimeInMs)
 	Sleep(10000)
 EndFunc
 
+Func togglePause()
+	$isPaused = Not $isPaused
+	While $isPaused
+		Sleep(400)
+	WEnd
+EndFunc
+
 #Region
 $Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 400, 154, -1, -1)
 $Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho sàn đấu Lễ hội hoặc U hồn!!!! ", 32, 16, 233, 97)
@@ -201,7 +211,7 @@ While 1
 		Case $GUI_EVENT_CLOSE
 			WinClose("Lễ hội + U Hồn")
 			ExitLoop
-			Exit 0
+			Exit 
 		Case $StartNStop
 			If Not $Start Then
 				$Start = True 
@@ -219,6 +229,7 @@ While 1
 				$Start = False 
 				GUICtrlSetData($StartNStop, "Start")
 				GUICtrlSetState($TimeInputBox, $GUI_ENABLE)
+				Exit
 			EndIf
 	EndSwitch
 WEnd
