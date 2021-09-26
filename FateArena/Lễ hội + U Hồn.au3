@@ -50,7 +50,7 @@ Func Auto($TimeInMs)
 
 	Local $timer = TimerInit()
 	$Clock = $TimeInMs
-	Sleep(60000) ;wait for the match to start
+	Sleep(55000) ;wait for the match to start
 
 	;Champ coords
 		Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(0, 2, 1))))
@@ -78,8 +78,8 @@ Func Auto($TimeInMs)
 		Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1457)
 		Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
 
-	While TimerDiff($timer) <= $Clock
-		While WinExists("League of Legends (TM) Client")
+	While WinExists("League of Legends (TM) Client")
+		While TimerDiff($timer) <= $Clock
 			If TimerDiff($timer) < 300000 Then
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
 			Else
@@ -141,26 +141,26 @@ Func Auto($TimeInMs)
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item10CoordX, $Item10CoordY, $Champ2CoordX, $ChampCoordY)
 			EndIf
-			;Check if HP reaches 0 after 20 mins
-			If TimerDiff($timer) >= 1200000 Then 
-				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.475)), 1)
+			;Check if HP reaches 0 after 18 mins
+			If TimerDiff($timer) >= 10800000 Then 
+				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.512)), 1)
 			EndIf
 			Sleep(30000)
 		WEnd
-		;Surrender if the ff time has passed
-		If $TimeInMs <> 0 Then  
-			Send("{ENTER}")
-			Sleep(500)
-			Send("/")
-			Sleep(300)
-			Send("f")
-			Sleep(200)
-			Send("f")
-			Sleep(500)
-			Send("{ENTER}")
-			Sleep(500)
-			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
-		EndIf
+	;Surrender if the ff time has passed
+	If $TimeInMs <> 0 Then  
+		Send("{ENTER}")
+		Sleep(500)
+		Send("/")
+		Sleep(300)
+		Send("f")
+		Sleep(200)
+		Send("f")
+		Sleep(500)
+		Send("{ENTER}")
+		Sleep(500)
+		MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
+	EndIf
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
@@ -172,6 +172,7 @@ Func togglePause()
 	While $isPaused
 		Sleep(400)
 	WEnd
+
 EndFunc
 
 #Region
@@ -197,9 +198,9 @@ While 1
 			If Not $Start Then
 				$Start = True 
 				GUICtrlSetData($StartNStop, "Stop")
-				GUICtrlSetState($TimeInputBox, $GUI_DISABLE)
 				$matchlength = StringSplit(GUICtrlRead($TimeInputBox), ":")
 				Global $MatchLengthInMilisecond = Int($matchlength[1]) * 60000 + Int($matchlength[2]) * 1000
+				GUICtrlSetState($TimeInputBox, $GUI_DISABLE)
 				While 1
 					While $Start
 						Auto($MatchLengthInMilisecond)
