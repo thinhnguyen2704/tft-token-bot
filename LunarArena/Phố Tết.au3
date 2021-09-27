@@ -24,6 +24,7 @@ HotKeySet("{PAUSE}", "togglePause")
 Global $clientsz = WinGetClientSize("League of Legends") ;get the client width and height
 Global $matchlength, $TimeInMs, $Clock
 Global $isPaused = False
+Global $arena = "Phố Tết"
 
 Func Auto($TimeInMs)
 	WinActivate("League of Legends")
@@ -176,7 +177,7 @@ EndFunc
 
 #Region
 $Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 400, 154, -1, -1)
-$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho sàn đấu Lễ hội hoặc U hồn!!!! ", 32, 16, 233, 97)
+$Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho sàn đấu " + $arena + " !!!! ", 32, 16, 233, 97)
 $TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
 GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
 $StartNStop = GUICtrlCreateButton("Bắt đầu", 168, 40, 73, 25)
@@ -190,7 +191,6 @@ While 1
 	$nMsg = GUIGetMsg()
 	Switch $nMsg
 		Case $GUI_EVENT_CLOSE
-			WinClose("Lễ hội + U Hồn")
 			ExitLoop
 			Exit 
 		Case $StartNStop
@@ -201,9 +201,7 @@ While 1
 				$matchlength = StringSplit(GUICtrlRead($TimeInputBox), ":")
 				Global $MatchLengthInMilisecond = Int($matchlength[1]) * 60000 + Int($matchlength[2]) * 1000
 				While 1
-					While $Start
-						Auto($MatchLengthInMilisecond)
-					WEnd
+					Auto($MatchLengthInMilisecond)
 				WEnd	
 			Else
 				ExitLoop
