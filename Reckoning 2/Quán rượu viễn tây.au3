@@ -78,8 +78,8 @@ Func Auto($TimeInMs)
         Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.2057)
         Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)
 
-	While TimerDiff($timer) <= $Clock
-		While WinExists("League of Legends (TM) Client")
+	While WinExists("League of Legends (TM) Client")
+		While TimerDiff($timer) <= $Clock
 			If TimerDiff($timer) < 300000 Then
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
 			Else
@@ -128,7 +128,7 @@ Func Auto($TimeInMs)
 			;Continue to collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 			;####Drag items from base to champs
-			If ((TimerDiff($timer) >= 300000 And TimerDiff($timer) <= 540000) Or (TimerDiff($timer) >= 720000 And TimerDiff($timer) <= 900000)) Then 
+			If ((TimerDiff($timer) >= 240000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 720000 And TimerDiff($timer) <= 1020000)) Then 
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $Champ1CoordX, $ChampCoordY)
@@ -141,11 +141,11 @@ Func Auto($TimeInMs)
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item10CoordX, $Item10CoordY, $Champ2CoordX, $ChampCoordY)
 			EndIf
-			;Check if HP reaches 0 after 20 mins
-			If TimerDiff($timer) >= 1200000 Then 
-				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.475)), 1)
+			;Check if HP reaches 0 after 18 mins
+			If TimerDiff($timer) >= 10800000 Then 
+				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.512)), 1)
 			EndIf
-			Sleep(30000)
+			Sleep(35000)
 		WEnd
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  

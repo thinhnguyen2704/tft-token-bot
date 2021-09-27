@@ -128,7 +128,7 @@ Func Auto($TimeInMs)
 			;Continue to collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 			;####Drag items from base to champs
-			If ((TimerDiff($timer) >= 300000 And TimerDiff($timer) <= 540000) Or (TimerDiff($timer) >= 720000 And TimerDiff($timer) <= 900000)) Then 
+			If ((TimerDiff($timer) >= 240000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 720000 And TimerDiff($timer) <= 1020000)) Then 
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $Champ1CoordX, $ChampCoordY)
@@ -145,22 +145,22 @@ Func Auto($TimeInMs)
 			If TimerDiff($timer) >= 10800000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.512)), 1)
 			EndIf
-			Sleep(30000)
+			Sleep(35000)
 		WEnd
-	;Surrender if the ff time has passed
-	If $TimeInMs <> 0 Then  
-		Send("{ENTER}")
-		Sleep(500)
-		Send("/")
-		Sleep(300)
-		Send("f")
-		Sleep(200)
-		Send("f")
-		Sleep(500)
-		Send("{ENTER}")
-		Sleep(500)
-		MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
-	EndIf
+		;Surrender if the ff time has passed
+		If $TimeInMs <> 0 Then  
+			Send("{ENTER}")
+			Sleep(500)
+			Send("/")
+			Sleep(300)
+			Send("f")
+			Sleep(200)
+			Send("f")
+			Sleep(500)
+			Send("{ENTER}")
+			Sleep(500)
+			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
+		EndIf
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
 	Sleep(10000)
