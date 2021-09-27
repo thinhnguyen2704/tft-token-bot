@@ -1,4 +1,5 @@
-﻿#include <ButtonConstants.au3>
+﻿#pragma compile(ExecLevel, requireAdministrator)
+#include <ButtonConstants.au3>
 #include <EditConstants.au3>
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
