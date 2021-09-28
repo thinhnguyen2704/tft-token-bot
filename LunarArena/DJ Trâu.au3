@@ -54,11 +54,7 @@ Func Auto($TimeInMs)
 	$Clock = $TimeInMs
 	Sleep(60000) ;wait for the match to start
 
-	;Champ coords
-		Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(0, 2, 1))))
-		Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(3, 5, 1))))
-		Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
-        ;DJ Trâu 
+	;DJ Trâu 
         Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.087)
         Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.687)
         Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.112)
@@ -129,7 +125,12 @@ Func Auto($TimeInMs)
 			Sleep(4000)
 			;Continue to collect mystery boxes
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
+
 			;####Drag items from base to champs
+			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(0, 3, 1))))
+			Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(3, 6, 1))))
+			Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
+
 			If ((TimerDiff($timer) >= 240000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 720000 And TimerDiff($timer) <= 1020000)) Then 
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
