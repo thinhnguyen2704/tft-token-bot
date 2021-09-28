@@ -163,6 +163,7 @@ Func Auto($TimeInMs)
 			Send("{ENTER}")
 			Sleep(500)
 			MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * (1 - 0.54297))), ($pxdifference[1] + Round($gamesz[1] * 0.45139)), 1)
+			Sleep(10000)
 		EndIf
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
