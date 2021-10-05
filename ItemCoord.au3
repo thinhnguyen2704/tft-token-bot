@@ -64,7 +64,7 @@
 		Local $Item10CoordX = $pxdifference[0] + Round($gamesz[0] * 0.148)
 		Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)
 
-	;U Hồn + (Lễ Hội)
+	;Lễ Hội + U hồn
 		Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
 		Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
 		Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
@@ -72,9 +72,9 @@
 		Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1055)
 		Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.635)
 		Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.125)
-		Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)
+		Local $Item4CoordY = $pxdifference[1] + Round($gamesz[1] * 0.6205)
 		Local $Item5CoordX = $pxdifference[0] + Round($gamesz[0] * 0.162)
-		Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.602)
+		Local $Item5CoordY = $pxdifference[1] + Round($gamesz[1] * 0.6205)
 		Local $Item6CoordX = $pxdifference[0] + Round($gamesz[0] * 0.111)
 		Local $Item6CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5794)
 		Local $Item7CoordX = $pxdifference[0] + Round($gamesz[0] * 0.14)
