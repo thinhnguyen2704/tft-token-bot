@@ -80,15 +80,14 @@ Func Auto($TimeInMs)
 		While TimerDiff($timer) <= $Clock
 			If TimerDiff($timer) < 300000 Then
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
 			Else
 				For $snowa = 1 To 5
 					MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * ($snowa - 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
-					Send("f")
 				Next
 				;Randomly sell champions
 				For $snow = 1 To 2
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * Random(0, 8, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)), ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.95)))
-					Send("f")
 				Next
 			EndIf
 
@@ -100,7 +99,7 @@ Func Auto($TimeInMs)
 			If TimerDiff($timer) <= 330000 Then 
 				For $hna = 1 To 2
 					;Move from second last row to 1st and 2nd pile of last row 
-					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * ($hna - 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
+					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(0, 4, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
 				Next
 			ElseIf TimerDiff($timer) >= 240000 And TimerDiff($timer) <= 510000 Then
 				;3rd pile
@@ -127,28 +126,46 @@ Func Auto($TimeInMs)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 
 			;####Drag items from base to champs
-			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(0, 3, 1))))
-			Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(3, 6, 1))))
-			Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
+			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 * 3)))
+			Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(0, 6, 1))))
+			Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.64)
 
-			If ((TimerDiff($timer) >= 240000 And TimerDiff($timer) <= 660000) Or (TimerDiff($timer) >= 720000 And TimerDiff($timer) <= 1020000)) Then 
+			If TimerDiff($timer) >= 150000 And TimerDiff($timer) <= 660000 Then 
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item4CoordX, $Item4CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item5CoordX, $Item5CoordY, $Champ1CoordX, $ChampCoordY)
-			ElseIf TimerDiff($timer) >= 900000 And TimerDiff($timer) <= 1200000 Then
+			ElseIf TimerDiff($timer) >= 720000 And TimerDiff($timer) <= 1200000 Then 
+				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ2CoordX, $ChampCoordY)
+				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ2CoordX, $ChampCoordY)
+				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $Champ2CoordX, $ChampCoordY)
+				MouseClickDrag("left", $Item4CoordX, $Item4CoordY, $Champ2CoordX, $ChampCoordY)
+				MouseClickDrag("left", $Item5CoordX, $Item5CoordY, $Champ2CoordX, $ChampCoordY)
+			ElseIf TimerDiff($timer) >= 900000 And TimerDiff($timer) <= 1320000 Then
 				MouseClickDrag("left", $Item6CoordX, $Item6CoordY, $Champ2CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item7CoordX, $Item7CoordY, $Champ2CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item8CoordX, $Item8CoordY, $Champ2CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item9CoordX, $Item9CoordY, $Champ2CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item10CoordX, $Item10CoordY, $Champ2CoordX, $ChampCoordY)
 			EndIf
+
 			;Check if HP reaches 0 after 18 mins
-			If TimerDiff($timer) >= 10800000 Then 
+			If TimerDiff($timer) >= 1080000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.512)), 1)
 			EndIf
 			Sleep(35000)
+
+			;Buy exp
+			If TimerDiff($timer) <= 360000 Then 
+				For $i = 1 To 2
+					Send("f")
+				Next
+			ElseIf TimerDiff($timer) >= 36000 And TimerDiff($timer) <= 1200000 Then
+				For $i = 1 To 5
+					Send("f")
+				Next				
+			EndIf
 		WEnd
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  

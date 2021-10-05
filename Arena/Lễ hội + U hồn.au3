@@ -157,10 +157,14 @@ Func Auto($TimeInMs)
 			Sleep(35000)
 
 			;Buy exp
-			If TimerDiff($timer) <= 1200000 Then 
-				For $i = 1 To 5
+			If TimerDiff($timer) <= 360000 Then 
+				For $i = 1 To 2
 					Send("f")
 				Next
+			ElseIf TimerDiff($timer) >= 36000 And TimerDiff($timer) <= 1200000 Then
+				For $i = 1 To 5
+					Send("f")
+				Next				
 			EndIf
 		WEnd
 		;Surrender if the ff time has passed
