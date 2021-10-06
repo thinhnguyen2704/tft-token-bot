@@ -77,7 +77,7 @@ Func Auto($TimeInMs)
 		Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5435)
 
 	While WinExists("League of Legends (TM) Client")
-		While TimerDiff($timer) <= $Clock
+		While TimerDiff($timer) <= $Clock And WinExists("League of Legends (TM) Client")
 			If TimerDiff($timer) < 300000 Then
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
@@ -126,9 +126,9 @@ Func Auto($TimeInMs)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 
 			;####Drag items from base to champs
-			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 * 3)))
-			Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(0, 6, 1))))
-			Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.64)
+			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.064 * 3)))
+			Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.064 *  Random(0, 6, 1))))
+			Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.62)
 
 			If TimerDiff($timer) >= 150000 And TimerDiff($timer) <= 660000 Then 
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)
@@ -154,7 +154,11 @@ Func Auto($TimeInMs)
 			If TimerDiff($timer) >= 1080000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.512)), 1)
 			EndIf
-			Sleep(35000)
+
+			;Take a rest
+			If WinExists("League of Legends (TM) Client") Then
+				Sleep(35000)
+			EndIf
 
 			;Buy exp
 			If TimerDiff($timer) <= 360000 Then 
@@ -167,6 +171,7 @@ Func Auto($TimeInMs)
 				Next				
 			EndIf
 		WEnd
+
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
 			Send("{ENTER}")
