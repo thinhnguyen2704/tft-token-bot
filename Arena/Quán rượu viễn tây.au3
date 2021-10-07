@@ -77,7 +77,7 @@ Func Auto($TimeInMs)
         Local $Item10CoordY = $pxdifference[1] + Round($gamesz[1] * 0.5538)
 
 	While WinExists("League of Legends (TM) Client")
-		While TimerDiff($timer) <= $Clock
+		While TimerDiff($timer) <= $Clock And WinExists("League of Legends (TM) Client")
 			If TimerDiff($timer) < 300000 Then
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
 				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
@@ -101,16 +101,16 @@ Func Auto($TimeInMs)
 					;Move from second last row to 1st and 2nd pile of last row 
 					MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(0, 4, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
 				Next
-			ElseIf TimerDiff($timer) >= 240000 And TimerDiff($timer) <= 510000 Then
+			ElseIf TimerDiff($timer) >= 90000 And TimerDiff($timer) <= 510000 Then
 				;3rd pile
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * 2)))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
-			ElseIf TimerDiff($timer) >= 360000 And TimerDiff($timer) <= 600000 Then
+			ElseIf TimerDiff($timer) >= 300000 And TimerDiff($timer) <= 600000 Then
 				;5th pile
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * 4)))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
-			ElseIf TimerDiff($timer) >= 600000 And TimerDiff($timer) <= 840000 Then
+			ElseIf TimerDiff($timer) >= 480000 And TimerDiff($timer) <= 840000 Then
 				;6th pile				
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.642))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
-			ElseIf TimerDiff($timer) >= 840000 And TimerDiff($timer) <= 1140000 Then
+			ElseIf TimerDiff($timer) >= 780000 And TimerDiff($timer) <= 1140000 Then
 				;7th pile 
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * 6)))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
 			EndIf
@@ -126,11 +126,11 @@ Func Auto($TimeInMs)
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.295)), 1)
 
 			;####Drag items from base to champs
-			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 * 3)))
-			Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.07 *  Random(0, 6, 1))))
-			Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.64)
+			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.064 * 3)))
+			Local $Champ2CoordX = $pxdifference[0] + Round($gamesz[0] * (0.3 + (0.064 *  Random(0, 6, 1))))
+			Local $ChampCoordY = $pxdifference[1] + Round($gamesz[1] * 0.61)
 
-			If TimerDiff($timer) >= 150000 And TimerDiff($timer) <= 660000 Then 
+			If TimerDiff($timer) >= 150000 And TimerDiff($timer) <= 720000 Then 
 				MouseClickDrag("left", $Item1CoordX, $Item1CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item2CoordX, $Item2CoordY, $Champ1CoordX, $ChampCoordY)
 				MouseClickDrag("left", $Item3CoordX, $Item3CoordY, $Champ1CoordX, $ChampCoordY)
@@ -153,8 +153,15 @@ Func Auto($TimeInMs)
 			;Check if HP reaches 0 after 18 mins
 			If TimerDiff($timer) >= 1080000 Then 
 				MouseClick("left", ($pxdifference[0] + Round($gamesz[0] * 0.42)), ($pxdifference[1] + Round($gamesz[1] * 0.512)), 1)
+				Sleep(5000)
 			EndIf
-			Sleep(35000)
+
+			;Take a rest
+			If WinExists("League of Legends (TM) Client") Then
+				Sleep(30000)
+			Else
+				ExitLoop
+			EndIf
 
 			;Buy exp
 			If TimerDiff($timer) <= 360000 Then 
@@ -162,11 +169,12 @@ Func Auto($TimeInMs)
 					Send("f")
 				Next
 			ElseIf TimerDiff($timer) >= 36000 And TimerDiff($timer) <= 1200000 Then
-				For $i = 1 To 5
+				For $i = 1 To Random(3, 6, 1)
 					Send("f")
 				Next				
 			EndIf
 		WEnd
+
 		;Surrender if the ff time has passed
 		If $TimeInMs <> 0 Then  
 			Send("{ENTER}")
@@ -184,7 +192,7 @@ Func Auto($TimeInMs)
 		EndIf
 	WEnd
 	WinWaitClose("League of Legends (TM) Client")
-	Sleep(10000)
+	Sleep(4000)
 EndFunc
 
 ;Manually pause the script
