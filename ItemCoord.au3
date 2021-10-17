@@ -68,7 +68,7 @@
 		Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
 		Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
 		Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
-		Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.656)
+		Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.667)
 		Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1055)
 		Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.635)
 		Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.125)
