@@ -54,7 +54,7 @@ Func Auto($TimeInMs)
 	$Clock = $TimeInMs
 	Sleep(55000) ;wait for the match to start
 
-	;Lễ Hội + U hồn
+	;Lễ Hội + U hồn coord
 		Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
 		Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
 		Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.114)
@@ -90,8 +90,10 @@ Func Auto($TimeInMs)
 			Else
 				;Buy champs 
 				For $snowa = 0 To 4
-					MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * $snowa))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
-					Sleep(400)
+					If WinExists("League of Legends (TM) Client") Then
+						MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * $snowa))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
+						Sleep(400)
+					EndIf
 				Next
 				;Randomly sell champions 
 				For $snow = 1 To Random(2, 3, 1)
@@ -167,12 +169,12 @@ Func Auto($TimeInMs)
 			EndIf
 
 			;Buy exp
-			If TimerDiff($timer) <= 360000 Then 
+			If TimerDiff($timer) >= 120000 And TimerDiff($timer) <= 360000 Then 
 				For $i = 1 To 2
 					Send("f")
 				Next
 			ElseIf TimerDiff($timer) >= 360000 And TimerDiff($timer) <= 1200000 Then
-				For $i = 1 To Random(3, 6, 1)
+				For $i = 1 To Random(3, 5, 1)
 					Send("f")
 				Next				
 			EndIf
