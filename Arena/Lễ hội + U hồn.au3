@@ -53,7 +53,7 @@ Func Auto($TimeInMs)
 	Local $timer = TimerInit()
 	$Clock = $TimeInMs
 	Sleep(55000) ;wait for the match to start
-
+	;Screen size 54x30cm
 	;Lễ Hội + U hồn coord
 		Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
 		Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
@@ -102,7 +102,7 @@ Func Auto($TimeInMs)
 				Next
 			EndIf
 
-			;Collect mystery boxes
+			;Collect mystery boxes - 1st move
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
 			Sleep(1000)
 
@@ -126,7 +126,7 @@ Func Auto($TimeInMs)
 				MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.4714)), ($pxdifference[1] + Round($gamesz[1] * 0.513)), ($pxdifference[0] + Round($gamesz[0] * 0.684)), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
 			EndIf
 
-			;Continue to collect mystery boxes
+			;Continue to collect mystery boxes - 2nd move 
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
 			Sleep(1000)
 
@@ -134,14 +134,17 @@ Func Auto($TimeInMs)
 			MouseClickDrag("left", ($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * 0.44)), ($pxdifference[0] + Round($gamesz[0] * (0.3 + (0.072 * Random(4, 6, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.615)))
 			Sleep(4000)
 
-			;Continue to collect mystery boxes
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.285)), ($pxdifference[1] + Round($gamesz[1] * 0.12)), 1)
+			;Continue to collect mystery boxes - 3rd move
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.296)), ($pxdifference[1] + Round($gamesz[1] * 0.23)), 1)
 
 			;####Sell champions on the arena 
 			If TimerDiff($timer) >= 510000 Then
 				MouseMove(($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * (0.3 + (0.072 * Random(0, 6, 1))))))
 				Send("e")
 			EndIf
+
+			;Continue to collect mystery boxes - 4th move
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.24)), ($pxdifference[1] + Round($gamesz[1] * 0.6)), 1)
 
 			;####Drag items from base to champs
 			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.5)
