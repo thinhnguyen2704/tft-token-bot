@@ -221,8 +221,8 @@
 	;Sàn dui dẻ của Jinx
 		Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1571)
 		Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.7179)
-		Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1742)
-		Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
+		Local $Item2CoordX = $pxdifference[0] + Round($gamesz[0] * 0.175)
+		Local $Item2CoordY = $pxdifference[1] + Round($gamesz[1] * 0.683)
 		Local $Item3CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1642)
 		Local $Item3CoordY = $pxdifference[1] + Round($gamesz[1] * 0.6538)
 		Local $Item4CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1857)

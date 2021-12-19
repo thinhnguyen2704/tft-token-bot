@@ -135,7 +135,7 @@ Func Auto($TimeInMs)
 			Sleep(4000)
 
 			;Continue to collect mystery boxes - 3rd move
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.296)), ($pxdifference[1] + Round($gamesz[1] * 0.23)), 1)
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.23)), 1)
 
 			;####Sell champions on the arena 
 			If TimerDiff($timer) >= 510000 Then
