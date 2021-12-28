@@ -53,7 +53,6 @@ Func Auto($TimeInMs)
 	Local $timer = TimerInit()
 	$Clock = $TimeInMs
 	Sleep(55000) ;wait for the match to start
-	;Screen size 54x30cm
 	;Lễ Hội + U hồn coord
 		Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.097)
 		Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.692)
