@@ -136,16 +136,11 @@ Func Auto($TimeInMs)
 
 			;Continue to collect mystery boxes - 3rd move
 			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.23)))
-
 			;####Sell champions on the arena 
 			If TimerDiff($timer) >= 510000 Then
 				MouseMove(($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * (0.3 + (0.072 * Random(0, 6, 1))))))
 				Send("e")
 			EndIf
-
-			;Continue to collect mystery boxes - 4th move
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.24)), ($pxdifference[1] + Round($gamesz[1] * 0.6)))
-			Sleep(4000)
 
 			;####Drag items from base to champs
 			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.5)
