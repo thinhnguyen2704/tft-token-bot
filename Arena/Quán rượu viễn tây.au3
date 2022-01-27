@@ -53,7 +53,6 @@ Func Auto($TimeInMs)
 	Local $timer = TimerInit()
 	$Clock = $TimeInMs
 	Sleep(60000) ;wait for the match to start
-
 	;Quán rượu viễn tây
         Local $Item1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.1571)
         Local $Item1CoordY = $pxdifference[1] + Round($gamesz[1] * 0.7179)
@@ -80,9 +79,9 @@ Func Auto($TimeInMs)
 		While TimerDiff($timer) <= $Clock And WinExists("League of Legends (TM) Client")
 			If TimerDiff($timer) < 600000 Then
 				;Buy champs
-				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]))
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
 				Sleep(400)
-				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]))
+				MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * Random(0, 4, 1)))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1)
 				Sleep(400)
 				;Sell champs
 				MouseMove(($pxdifference[0] + Round($gamesz[0] * (0.23 + (0.0625 * Random(0, 8, 1))))), ($pxdifference[1] + Round($gamesz[1] * 0.7185)))
@@ -91,7 +90,7 @@ Func Auto($TimeInMs)
 				;Buy champs 
 				For $snowa = 0 To 4
 					If WinExists("League of Legends (TM) Client") Then
-						MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * $snowa))), Round(($gamesz[1] * 0.92) + $pxdifference[1])) ;buy all champs from store
+						MouseClick("left", ($pxdifference[0] + $gamesz[0] * (0.3 + (0.105 * $snowa))), Round(($gamesz[1] * 0.92) + $pxdifference[1]), 1) ;buy all champs from store
 						Sleep(400)
 					EndIf
 				Next
@@ -103,7 +102,7 @@ Func Auto($TimeInMs)
 			EndIf
 
 			;Collect mystery boxes - 1st move
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)))
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.7)), ($pxdifference[1] + Round($gamesz[1] * 0.493)), 1)
 			Sleep(1000)
 
 			;#### Move champs on the last row from left to right
@@ -127,7 +126,7 @@ Func Auto($TimeInMs)
 			EndIf
 
 			;Continue to collect mystery boxes - 2nd move 
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)))
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.65)), ($pxdifference[1] + Round($gamesz[1] * 0.267)), 1)
 			Sleep(1000)
 
 			;Move from third last row to last row
@@ -135,12 +134,16 @@ Func Auto($TimeInMs)
 			Sleep(4000)
 
 			;Continue to collect mystery boxes - 3rd move
-			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.23)))
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.3)), ($pxdifference[1] + Round($gamesz[1] * 0.23)), 1)
+
 			;####Sell champions on the arena 
 			If TimerDiff($timer) >= 510000 Then
 				MouseMove(($pxdifference[0] + Round($gamesz[0] * 0.5)), ($pxdifference[1] + Round($gamesz[1] * (0.3 + (0.072 * Random(0, 6, 1))))))
 				Send("e")
 			EndIf
+
+			;Continue to collect mystery boxes - 4th move
+			MouseClick("right", ($pxdifference[0] + Round($gamesz[0] * 0.24)), ($pxdifference[1] + Round($gamesz[1] * 0.6)), 1)
 
 			;####Drag items from base to champs
 			Local $Champ1CoordX = $pxdifference[0] + Round($gamesz[0] * 0.5)
@@ -173,8 +176,8 @@ Func Auto($TimeInMs)
 				For $i = 1 To 2
 					Send("f")
 				Next
-			ElseIf TimerDiff($timer) >= 900000 And TimerDiff($timer) <= 1200000 Then
-				For $i = 1 To Random(3, 10, 1)
+			ElseIf TimerDiff($timer) >= 360000 And TimerDiff($timer) <= 1200000 Then
+				For $i = 1 To Random(3, 5, 1)
 					Send("f")
 				Next				
 			EndIf
@@ -187,7 +190,11 @@ Func Auto($TimeInMs)
 
 			;Take a rest
 			If WinExists("League of Legends (TM) Client") Then
-				Sleep(30000)
+				If TimerDiff($timer) <= 360000 Then
+					Sleep(18000)
+				Else
+					Sleep(30000)
+				EndIf
 			Else
 				ExitLoop
 			EndIf

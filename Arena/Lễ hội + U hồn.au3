@@ -190,7 +190,11 @@ Func Auto($TimeInMs)
 
 			;Take a rest
 			If WinExists("League of Legends (TM) Client") Then
-				Sleep(30000)
+				If TimerDiff($timer) <= 360000 Then
+					Sleep(18000)
+				Else
+					Sleep(30000)
+				EndIf
 			Else
 				ExitLoop
 			EndIf
