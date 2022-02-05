@@ -231,10 +231,10 @@ Func togglePause()
 EndFunc
 
 #Region
-$Menu = GUICreate("Con bot TFT mang tên Wind yêu Snow", 400, 154, -1, -1)
+$Menu = GUICreate("Bot cà kỷ vật TFT", 700, 300, -1, -1)
 $Time_Input_Area = GUICtrlCreateGroup("Chỉ dành cho sàn đấu " & $arena & " !!!! ", 32, 16, 233, 97)
-$TimeInputBox = GUICtrlCreateInput("21:00", 56, 40, 89, 21)
-GUICtrlSetTip(-1, "Tình yêu siu bự cho Snow")
+$TimeInputBox = GUICtrlCreateInput("24:00", 56, 40, 89, 21)
+GUICtrlSetTip(-1, "Tình yêu siu bự cho Tokbokki")
 $StartNStop = GUICtrlCreateButton("Bắt đầu", 168, 40, 73, 25)
 Global $Start = False 
 $Note = GUICtrlCreateLabel("Love you to the infinity and beyond!!!!", 48, 72, 202, 17)
